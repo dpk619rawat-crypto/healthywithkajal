@@ -1,0 +1,1748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kajal Nutrition Studio — Balance Your Body. Transform Your Life.</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════
+   ROOT & RESET
+═══════════════════════════════════════════════ */
+:root{
+  --forest:#1F3D36; --forest-d:#162d28; --forest-l:#2a5447;
+  --sage:#3D6B4F; --sage-m:#5A8C6A; --sage-l:#A8C5B0; --sage-p:#E8F2EC;
+  --terra:#C56A4A; --terra-l:#d98060; --terra-d:#a8522a;
+  --gold:#D4AF37; --gold-l:#e8c84a;
+  --cream:#FDF8F2; --linen:#F5EDE0; --white:#ffffff;
+  --charcoal:#1e1e1e; --gray:#6b6b6b; --lgray:#e5e5e5;
+  --glass:rgba(255,255,255,0.12);
+  --shadow:0 20px 60px rgba(31,61,54,.15);
+  --r:20px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Poppins',sans-serif;background:var(--cream);color:var(--charcoal);overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.15}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+input,textarea,select{font-family:'Poppins',sans-serif}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-thumb{background:var(--sage-m);border-radius:4px}
+
+/* ═══════════════════════════════════════════════
+   PAGE SYSTEM
+═══════════════════════════════════════════════ */
+.page{display:none;animation:pageIn .45s ease}
+.page.active{display:block}
+@keyframes pageIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════════
+   NAVBAR
+═══════════════════════════════════════════════ */
+#navbar{
+  position:fixed;top:0;left:0;right:0;z-index:1000;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 5%;
+  background:rgba(253,248,242,.96);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid rgba(61,107,79,.1);
+  transition:padding .3s,box-shadow .3s;
+}
+#navbar.scrolled{padding:12px 5%;box-shadow:0 4px 30px rgba(0,0,0,.08)}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer}
+.logo-icon{
+  width:44px;height:44px;border-radius:12px;
+  background:linear-gradient(135deg,var(--forest),var(--sage-m));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.2rem;box-shadow:0 4px 14px rgba(31,61,54,.3);
+}
+.logo-text{line-height:1}
+.logo-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest)}
+.logo-name span{color:var(--terra)}
+.logo-sub{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sage-m)}
+.nav-links{display:flex;gap:6px;list-style:none}
+.nav-links a{
+  font-size:.78rem;font-weight:500;letter-spacing:.04em;
+  padding:8px 14px;border-radius:50px;color:var(--gray);
+  transition:all .2s;cursor:pointer;
+}
+.nav-links a:hover,.nav-links a.active{background:var(--sage-p);color:var(--forest)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-btn{
+  padding:10px 22px;border-radius:50px;font-size:.78rem;font-weight:600;
+  letter-spacing:.04em;cursor:pointer;transition:all .25s;border:none;
+}
+.nav-btn-outline{background:transparent;border:1.5px solid var(--terra);color:var(--terra)}
+.nav-btn-outline:hover{background:var(--terra);color:#fff}
+.nav-btn-fill{background:var(--terra);color:#fff;box-shadow:0 4px 14px rgba(197,106,74,.3)}
+.nav-btn-fill:hover{background:var(--terra-d);transform:translateY(-1px)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:22px;height:2px;background:var(--forest);border-radius:2px;transition:all .3s}
+.mobile-menu{
+  display:none;position:fixed;top:72px;left:0;right:0;
+  background:var(--white);border-bottom:1px solid var(--lgray);
+  padding:20px 5%;z-index:999;
+}
+.mobile-menu.open{display:flex;flex-direction:column;gap:4px}
+.mobile-menu a{padding:12px 16px;border-radius:10px;font-size:.9rem;color:var(--gray);cursor:pointer}
+.mobile-menu a:hover{background:var(--sage-p);color:var(--forest)}
+
+/* ═══════════════════════════════════════════════
+   SHARED SECTION STYLES
+═══════════════════════════════════════════════ */
+.section{padding:100px 5%}
+.section-inner{max-width:1140px;margin:0 auto}
+.section-tag{
+  display:inline-flex;align-items:center;gap:10px;
+  color:var(--terra);font-size:.72rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px;
+}
+.section-tag::before{content:'';width:28px;height:2px;background:var(--terra)}
+.section-title{font-size:clamp(2rem,3.8vw,3rem);font-weight:700;color:var(--forest);margin-bottom:14px}
+.section-title em{font-style:italic;color:var(--sage)}
+.section-desc{font-size:.92rem;color:var(--gray);line-height:1.85;max-width:580px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-size:.86rem;font-weight:600;letter-spacing:.04em;cursor:pointer;transition:all .25s;border:none;text-decoration:none}
+.btn-forest{background:var(--forest);color:#fff;box-shadow:0 4px 20px rgba(31,61,54,.25)}
+.btn-forest:hover{background:var(--sage);transform:translateY(-2px);box-shadow:0 8px 28px rgba(31,61,54,.3)}
+.btn-terra{background:var(--terra);color:#fff;box-shadow:0 4px 20px rgba(197,106,74,.3)}
+.btn-terra:hover{background:var(--terra-d);transform:translateY(-2px)}
+.btn-outline-f{border:2px solid var(--forest);color:var(--forest);background:transparent}
+.btn-outline-f:hover{background:var(--forest);color:#fff;transform:translateY(-2px)}
+.btn-outline-t{border:2px solid var(--terra);color:var(--terra);background:transparent}
+.btn-outline-t:hover{background:var(--terra);color:#fff;transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:var(--charcoal);box-shadow:0 4px 20px rgba(212,175,55,.3)}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.btn-sm{padding:10px 22px;font-size:.78rem}
+.btn-white{background:#fff;color:var(--terra)}
+.btn-white:hover{background:var(--linen);transform:translateY(-2px)}
+
+/* Cards */
+.glass-card{
+  background:rgba(255,255,255,.72);
+  backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:var(--r);
+  box-shadow:0 8px 32px rgba(31,61,54,.08);
+  transition:all .3s;
+}
+.glass-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(31,61,54,.14)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}.delay-4{transition-delay:.4s}
+
+/* ═══════════════════════════════════════════════
+   ████  HOME PAGE  ████
+═══════════════════════════════════════════════ */
+
+/* HERO */
+.hero{
+  min-height:100vh;display:grid;grid-template-columns:1fr 1fr;
+  padding-top:80px;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,var(--cream) 0%,rgba(232,242,236,.4) 50%,rgba(245,237,224,.6) 100%);
+}
+.hero-orb{position:absolute;border-radius:50%;pointer-events:none}
+.hero-orb-1{top:-200px;right:-150px;width:600px;height:600px;background:radial-gradient(circle,rgba(61,107,79,.12),transparent 70%)}
+.hero-orb-2{bottom:-100px;left:5%;width:400px;height:400px;background:radial-gradient(circle,rgba(197,106,74,.1),transparent 70%)}
+.hero-leaf{position:absolute;opacity:.1;pointer-events:none;animation:leafFloat 7s ease-in-out infinite}
+@keyframes leafFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(12deg)}}
+
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:80px 40px 80px 6%;position:relative;z-index:2;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--sage-p);border:1px solid var(--sage-l);
+  border-radius:50px;padding:8px 20px;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--sage);width:fit-content;margin-bottom:28px;
+  animation:fadeUp .7s ease both;
+}
+.hero-eyebrow::before{content:'✦';font-size:.6rem}
+.hero-h1{
+  font-size:clamp(2.8rem,4.5vw,4.4rem);font-weight:700;
+  color:var(--forest);line-height:1.06;margin-bottom:12px;
+  animation:fadeUp .7s .08s ease both;
+}
+.hero-h1 em{font-style:italic;color:var(--terra)}
+.hero-tagline{
+  font-size:1rem;font-weight:500;color:var(--sage-m);
+  margin-bottom:22px;letter-spacing:.02em;
+  animation:fadeUp .7s .15s ease both;
+}
+.hero-desc{
+  font-size:.92rem;line-height:1.85;color:var(--gray);
+  max-width:440px;margin-bottom:42px;
+  animation:fadeUp .7s .22s ease both;
+}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp .7s .28s ease both}
+.hero-trust{
+  display:flex;align-items:center;gap:16px;margin-top:44px;
+  padding-top:36px;border-top:1px solid rgba(61,107,79,.15);
+  animation:fadeUp .7s .35s ease both;
+}
+.trust-avatars{display:flex}
+.trust-avatar{
+  width:36px;height:36px;border-radius:50%;
+  border:2px solid #fff;overflow:hidden;
+  margin-left:-10px;background:var(--sage-p);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+}
+.trust-avatar:first-child{margin-left:0}
+.trust-info{}
+.trust-stars{color:var(--gold);font-size:.8rem;letter-spacing:2px}
+.trust-text{font-size:.74rem;color:var(--gray);margin-top:2px}
+.trust-text strong{color:var(--forest)}
+
+.hero-right{
+  position:relative;z-index:2;
+  display:flex;align-items:center;justify-content:center;
+  padding:60px 6% 60px 20px;
+}
+.hero-img-wrap{position:relative;width:100%;max-width:440px}
+.hero-main-img{
+  width:100%;height:520px;object-fit:cover;
+  border-radius:40px 40px 120px 40px;
+  box-shadow:0 40px 100px rgba(31,61,54,.22);
+  animation:fadeUp .7s .1s ease both;
+}
+.hero-card-1{
+  position:absolute;bottom:-24px;left:-36px;
+  background:var(--forest);border-radius:20px;padding:20px 26px;
+  box-shadow:0 20px 50px rgba(31,61,54,.35);
+  animation:fadeUp .7s .32s ease both;min-width:200px;
+}
+.hero-card-1 .hc-lbl{font-size:.63rem;color:var(--sage-l);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.hero-card-1 .hc-val{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1}
+.hero-card-1 .hc-sub{font-size:.7rem;color:rgba(255,255,255,.55);margin-top:4px}
+.hero-card-2{
+  position:absolute;top:40px;right:-28px;
+  background:#fff;border-radius:18px;padding:18px 22px;
+  box-shadow:0 16px 44px rgba(0,0,0,.12);
+  animation:fadeUp .7s .4s ease both;
+}
+.hero-card-2 .hc2-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.hero-card-2 .hc2-row:last-child{margin-bottom:0}
+.hero-card-2 .hc2-dot{width:8px;height:8px;border-radius:50%;background:var(--sage-m)}
+.hero-card-2 .hc2-dot.gold{background:var(--gold)}
+.hero-card-2 .hc2-dot.terra{background:var(--terra)}
+.hero-card-2 .hc2-text{font-size:.75rem;font-weight:500;color:var(--forest)}
+.hero-badge-img{
+  position:absolute;top:-20px;left:50%;transform:translateX(-50%);
+  background:var(--terra);color:#fff;border-radius:50px;
+  padding:8px 20px;font-size:.7rem;font-weight:700;letter-spacing:.06em;
+  white-space:nowrap;box-shadow:0 8px 24px rgba(197,106,74,.4);
+}
+
+/* TRUST BAR */
+.trust-bar{
+  background:var(--forest);padding:22px 5%;
+  display:flex;align-items:center;justify-content:center;
+  gap:0;flex-wrap:wrap;
+}
+.tb-item{
+  display:flex;align-items:center;gap:10px;
+  padding:8px 28px;color:rgba(255,255,255,.85);font-size:.78rem;
+  border-right:1px solid rgba(255,255,255,.12);
+}
+.tb-item:last-child{border-right:none}
+.tb-icon{font-size:1.2rem}
+
+/* STATS ROW */
+.stats-section{background:var(--linen);padding:60px 5%}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1000px;margin:0 auto}
+.stat-card{text-align:center;padding:32px 20px;border-radius:var(--r);background:#fff;box-shadow:0 4px 20px rgba(31,61,54,.06)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--forest);line-height:1}
+.stat-num span{color:var(--terra);font-size:2rem}
+.stat-label{font-size:.75rem;color:var(--gray);letter-spacing:.06em;text-transform:uppercase;margin-top:8px}
+
+/* ABOUT SNAPSHOT */
+.about-snap{background:var(--white)}
+.about-snap-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;max-width:1140px;margin:0 auto}
+.about-img-wrap{position:relative}
+.about-main-img{width:100%;height:500px;object-fit:cover;border-radius:24px 80px 24px 24px;box-shadow:var(--shadow)}
+.about-exp-badge{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--terra);color:#fff;border-radius:16px;padding:20px 26px;
+  box-shadow:0 12px 36px rgba(197,106,74,.35);text-align:center;
+}
+.about-exp-badge .exp-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;line-height:1}
+.about-exp-badge .exp-lbl{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;opacity:.9;margin-top:4px}
+.about-certs{display:flex;flex-direction:column;gap:10px;margin-top:28px}
+.cert-item{display:flex;align-items:center;gap:12px;font-size:.84rem;color:var(--forest);font-weight:500}
+.cert-check{width:22px;height:22px;border-radius:50%;background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0}
+
+/* CONDITIONS */
+.conditions{background:var(--sage-p)}
+.cond-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.cond-card{
+  border-radius:var(--r);overflow:hidden;position:relative;
+  height:240px;cursor:default;
+}
+.cond-card:hover .cond-img{transform:scale(1.07)}
+.cond-img{width:100%;height:100%;object-fit:cover;transition:transform .45s}
+.cond-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(31,61,54,.92) 0%,rgba(31,61,54,.1) 55%,transparent 100%);
+  display:flex;flex-direction:column;justify-content:flex-end;padding:26px;
+  transition:all .3s;
+}
+.cond-card:hover .cond-overlay{background:linear-gradient(to top,rgba(31,61,54,.96) 0%,rgba(31,61,54,.3) 55%,transparent 100%)}
+.cond-icon-wrap{font-size:1.8rem;margin-bottom:8px}
+.cond-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px}
+.cond-desc{font-size:.74rem;color:rgba(168,197,176,.9);line-height:1.6;max-height:0;overflow:hidden;transition:max-height .35s}
+.cond-card:hover .cond-desc{max-height:80px}
+.cond-btn{
+  display:inline-flex;align-items:center;gap:5px;margin-top:10px;
+  font-size:.7rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--gold);opacity:0;transform:translateY(8px);transition:all .3s .1s;
+}
+.cond-card:hover .cond-btn{opacity:1;transform:translateY(0)}
+
+/* PROGRAMS PREVIEW */
+.programs-prev{background:var(--forest)}
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.prog-card{
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r);padding:36px 30px;position:relative;overflow:hidden;
+  transition:all .3s;cursor:default;
+}
+.prog-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(90,140,106,.18),transparent 60%);opacity:0;transition:.3s}
+.prog-card:hover{transform:translateY(-6px);border-color:rgba(168,197,176,.3)}
+.prog-card:hover::before{opacity:1}
+.prog-num{position:absolute;top:16px;right:20px;font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(255,255,255,.04);line-height:1}
+.prog-icon{font-size:2.2rem;margin-bottom:18px}
+.prog-name{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:#fff;margin-bottom:10px}
+.prog-desc{font-size:.8rem;color:rgba(168,197,176,.85);line-height:1.75;margin-bottom:22px}
+.prog-tag{display:inline-block;background:rgba(212,175,55,.18);border:1px solid rgba(212,175,55,.3);color:var(--gold);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px;margin-bottom:16px}
+.prog-link{display:inline-flex;align-items:center;gap:6px;font-size:.74rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--gold);transition:gap .2s;cursor:pointer}
+.prog-link:hover{gap:12px}
+
+/* MEAL PLAN PREVIEW */
+.meal-prev{background:var(--white)}
+.meal-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;margin-top:56px}
+.meal-imgs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.meal-img-big{grid-column:1/-1;width:100%;height:240px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow)}
+.meal-img-sm{width:100%;height:150px;object-fit:cover;border-radius:14px;transition:transform .3s}
+.meal-img-sm:hover{transform:scale(1.03)}
+.meal-plan-card{background:var(--cream);border-radius:var(--r);padding:32px;box-shadow:0 8px 32px rgba(31,61,54,.08)}
+.mpc-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--sage-p)}
+.mpc-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest)}
+.mpc-badge{background:var(--forest);color:#fff;font-size:.68rem;font-weight:700;padding:5px 14px;border-radius:50px}
+.mpc-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid rgba(232,242,236,.9)}
+.mpc-row:last-child{border-bottom:none}
+.mpc-time{font-size:.65rem;color:var(--gray);width:52px;flex-shrink:0}
+.mpc-emoji{font-size:1.1rem;width:28px;text-align:center;flex-shrink:0}
+.mpc-food{flex:1;font-size:.82rem;font-weight:500;color:var(--forest)}
+.mpc-kcal{background:var(--sage-p);color:var(--sage);font-size:.68rem;font-weight:700;padding:3px 10px;border-radius:50px}
+.macro-row{display:flex;justify-content:space-around;background:var(--forest);border-radius:14px;padding:18px;margin-top:20px}
+.macro-m{text-align:center;color:#fff}
+.macro-v{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--gold)}
+.macro-v em{font-size:.8rem;font-style:normal}
+.macro-l{font-size:.62rem;text-transform:uppercase;letter-spacing:.07em;opacity:.6;margin-top:3px}
+
+/* TESTIMONIALS */
+.testi{background:var(--linen)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:56px}
+.testi-card{background:#fff;border-radius:var(--r);padding:32px;border:1px solid rgba(232,242,236,.8);transition:all .3s;position:relative}
+.testi-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(31,61,54,.1);border-color:var(--sage-l)}
+.testi-result-tag{position:absolute;top:20px;right:20px;background:var(--terra);color:#fff;font-size:.62rem;font-weight:700;padding:4px 12px;border-radius:50px;letter-spacing:.04em}
+.testi-q{font-size:2.8rem;font-family:'Playfair Display',serif;color:var(--sage-p);line-height:1;margin-bottom:8px}
+.testi-stars{color:var(--gold);letter-spacing:3px;font-size:.85rem;margin-bottom:14px}
+.testi-text{font-family:'Playfair Display',serif;font-style:italic;font-size:.95rem;color:var(--charcoal);line-height:1.7;margin-bottom:22px}
+.testi-author{display:flex;align-items:center;gap:12px}
+.testi-av{width:44px;height:44px;border-radius:50%;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--forest);flex-shrink:0}
+.testi-name{font-size:.84rem;font-weight:700;color:var(--forest)}
+.testi-loc{font-size:.7rem;color:var(--gray);margin-top:2px}
+
+/* BLOG PREVIEW */
+.blog-prev{background:var(--white)}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.blog-card{border-radius:var(--r);overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:all .3s;background:#fff}
+.blog-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(31,61,54,.14)}
+.blog-card:hover .blog-img{transform:scale(1.06)}
+.blog-img{width:100%;height:200px;object-fit:cover;transition:transform .4s}
+.blog-body{padding:24px}
+.blog-cat{font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.blog-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--forest);margin-bottom:10px;line-height:1.35}
+.blog-excerpt{font-size:.78rem;color:var(--gray);line-height:1.7;margin-bottom:16px}
+.blog-read{font-size:.72rem;font-weight:700;color:var(--sage);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px;transition:gap .2s;cursor:pointer}
+.blog-read:hover{gap:10px;color:var(--forest)}
+
+/* INSTAGRAM */
+.insta{background:var(--sage-p)}
+.insta-handle{font-size:1.1rem;color:var(--terra);font-weight:600;margin-bottom:32px;display:flex;align-items:center;gap:8px}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:32px}
+.insta-item{aspect-ratio:1;border-radius:10px;overflow:hidden;position:relative;cursor:pointer}
+.insta-item:hover .insta-overlay{opacity:1}
+.insta-img{width:100%;height:100%;object-fit:cover;transition:transform .35s}
+.insta-item:hover .insta-img{transform:scale(1.1)}
+.insta-overlay{position:absolute;inset:0;background:rgba(31,61,54,.7);display:flex;align-items:center;justify-content:center;opacity:0;transition:.3s;font-size:1.4rem}
+
+/* TIP OF DAY */
+.tip-section{background:var(--forest)}
+.tip-card{
+  max-width:800px;margin:0 auto;
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  border-radius:24px;padding:40px 48px;
+  display:flex;align-items:center;gap:28px;
+}
+.tip-bulb{font-size:3rem}
+.tip-body{}
+.tip-lbl{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.tip-text-d{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;line-height:1.55}
+.tip-refresh{margin-top:16px;background:transparent;border:1.5px solid rgba(255,255,255,.25);color:rgba(255,255,255,.7);padding:8px 20px;border-radius:50px;font-size:.74rem;font-family:'Poppins',sans-serif;cursor:pointer;transition:all .2s}
+.tip-refresh:hover{border-color:var(--gold);color:var(--gold)}
+
+/* CTA BANNER */
+.cta-banner{
+  background:linear-gradient(135deg,var(--terra) 0%,var(--terra-d) 100%);
+  padding:90px 5%;text-align:center;position:relative;overflow:hidden;
+}
+.cta-banner::before,.cta-banner::after{content:'';position:absolute;border-radius:50%;pointer-events:none}
+.cta-banner::before{top:-120px;right:-120px;width:400px;height:400px;background:rgba(255,255,255,.08)}
+.cta-banner::after{bottom:-80px;left:-80px;width:300px;height:300px;background:rgba(255,255,255,.06)}
+.cta-banner h2{font-size:clamp(2rem,4vw,3rem);font-weight:700;color:#fff;margin-bottom:14px;position:relative}
+.cta-banner p{font-size:.95rem;color:rgba(255,255,255,.82);margin-bottom:36px;position:relative}
+.cta-btn-row{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;position:relative}
+
+/* ═══════════════════════════════════════════════
+   ████  PROGRAMS PAGE  ████
+═══════════════════════════════════════════════ */
+.page-hero{
+  background:linear-gradient(135deg,var(--forest) 0%,var(--forest-l) 100%);
+  padding:140px 5% 80px;text-align:center;position:relative;overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;border-radius:50%;background:rgba(90,140,106,.15)}
+.page-hero h1{font-size:clamp(2.4rem,4vw,3.5rem);color:#fff;margin-bottom:14px;position:relative}
+.page-hero h1 em{color:var(--gold);font-style:italic}
+.page-hero p{font-size:.95rem;color:rgba(168,197,176,.85);max-width:600px;margin:0 auto;position:relative}
+.prog-full-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:60px}
+.prog-full-card{
+  background:#fff;border-radius:var(--r);overflow:hidden;
+  box-shadow:0 4px 24px rgba(31,61,54,.08);transition:all .3s;
+}
+.prog-full-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(31,61,54,.14)}
+.pfc-img{width:100%;height:220px;object-fit:cover}
+.pfc-body{padding:32px}
+.pfc-icon-row{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.pfc-icon{font-size:1.8rem}
+.pfc-tag{background:var(--sage-p);color:var(--sage);font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 12px;border-radius:50px}
+.pfc-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--forest);margin-bottom:10px}
+.pfc-desc{font-size:.82rem;color:var(--gray);line-height:1.75;margin-bottom:18px}
+.pfc-features{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:22px}
+.pfc-features li{font-size:.78rem;color:var(--charcoal);display:flex;align-items:center;gap:8px}
+.pfc-features li::before{content:'→';color:var(--terra);font-size:.7rem;font-weight:700}
+.pfc-footer{display:flex;align-items:center;justify-content:space-between}
+.pfc-duration{font-size:.74rem;color:var(--gray)}
+.pfc-duration strong{color:var(--forest)}
+
+/* ═══════════════════════════════════════════════
+   ████  TOOLS PAGE  ████
+═══════════════════════════════════════════════ */
+.tools-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:60px}
+.tool-card{background:#fff;border-radius:var(--r);padding:36px;box-shadow:0 4px 24px rgba(31,61,54,.07);border:1px solid var(--lgray);transition:all .3s}
+.tool-card:hover{border-color:var(--sage-l);box-shadow:0 12px 40px rgba(31,61,54,.12)}
+.tool-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.tool-icon-wrap{width:50px;height:50px;border-radius:14px;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
+.tool-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--forest)}
+.tool-sub{font-size:.74rem;color:var(--gray);margin-top:2px}
+.tool-fields{display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+.tool-field label{display:block;font-size:.74rem;font-weight:600;color:var(--forest);margin-bottom:6px;letter-spacing:.03em}
+.tool-field input,.tool-field select{
+  width:100%;padding:11px 16px;border:1.5px solid var(--lgray);border-radius:10px;
+  font-size:.85rem;color:var(--charcoal);outline:none;transition:border .2s;
+}
+.tool-field input:focus,.tool-field select:focus{border-color:var(--sage-m)}
+.tool-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tool-result{
+  background:var(--forest);border-radius:14px;padding:20px 24px;
+  display:flex;align-items:center;justify-content:space-between;
+  min-height:72px;
+}
+.tr-label{font-size:.72rem;color:rgba(168,197,176,.8);text-transform:uppercase;letter-spacing:.07em;margin-bottom:4px}
+.tr-value{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--gold)}
+.tr-category{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:2px}
+.tool-calc-btn{width:100%;background:var(--sage);color:#fff;border:none;border-radius:12px;padding:13px;font-size:.86rem;font-weight:600;font-family:'Poppins',sans-serif;cursor:pointer;transition:all .2s;margin-bottom:16px}
+.tool-calc-btn:hover{background:var(--forest)}
+
+/* Food finder */
+.food-finder{background:#fff;border-radius:var(--r);padding:36px;box-shadow:0 4px 24px rgba(31,61,54,.07);border:1px solid var(--lgray);margin-top:28px}
+.food-search-row{display:flex;gap:12px}
+.food-input{flex:1;padding:13px 20px;border:1.5px solid var(--lgray);border-radius:12px;font-size:.88rem;font-family:'Poppins',sans-serif;outline:none;transition:border .2s}
+.food-input:focus{border-color:var(--sage-m)}
+.food-results{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.food-result-card{background:var(--sage-p);border-radius:14px;padding:18px;text-align:center}
+.food-result-name{font-size:.82rem;font-weight:700;color:var(--forest);margin-bottom:10px}
+.food-macros-mini{display:flex;flex-direction:column;gap:5px}
+.fmm-row{display:flex;justify-content:space-between;font-size:.72rem;padding:4px 8px;background:#fff;border-radius:8px}
+.fmm-l{color:var(--gray)}.fmm-v{font-weight:700;color:var(--forest)}
+
+/* ═══════════════════════════════════════════════
+   ████  BLOG PAGE  ████
+═══════════════════════════════════════════════ */
+.blog-cats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.blog-cat-btn{
+  padding:9px 22px;border-radius:50px;font-size:.78rem;font-weight:600;
+  border:1.5px solid var(--lgray);background:transparent;color:var(--gray);
+  cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;
+}
+.blog-cat-btn.active,.blog-cat-btn:hover{background:var(--forest);color:#fff;border-color:var(--forest)}
+.blog-full-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.blog-full-card{border-radius:var(--r);overflow:hidden;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.06);transition:all .3s}
+.blog-full-card:hover{transform:translateY(-5px);box-shadow:0 20px 50px rgba(31,61,54,.13)}
+.bfc-img{width:100%;height:210px;object-fit:cover;transition:transform .4s}
+.blog-full-card:hover .bfc-img{transform:scale(1.05)}
+.bfc-body{padding:26px}
+.bfc-meta{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.bfc-cat-pill{background:var(--sage-p);color:var(--sage);font-size:.63rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:50px}
+.bfc-date{font-size:.68rem;color:var(--gray)}
+.bfc-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--forest);margin-bottom:10px;line-height:1.35}
+.bfc-excerpt{font-size:.78rem;color:var(--gray);line-height:1.7;margin-bottom:16px}
+.bfc-read{font-size:.72rem;font-weight:700;color:var(--sage);letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:5px;transition:gap .2s;cursor:pointer}
+.bfc-read:hover{gap:10px;color:var(--forest)}
+
+/* ═══════════════════════════════════════════════
+   ████  ABOUT PAGE  ████
+═══════════════════════════════════════════════ */
+.about-page-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:80px;align-items:start}
+.about-page-imgs{position:relative}
+.api-main{width:100%;height:500px;object-fit:cover;border-radius:24px;box-shadow:var(--shadow)}
+.api-small{position:absolute;bottom:-20px;right:-20px;width:180px;height:220px;object-fit:cover;border-radius:16px;border:4px solid #fff;box-shadow:0 12px 36px rgba(31,61,54,.2)}
+.about-timeline{margin-top:40px;display:flex;flex-direction:column;gap:20px}
+.at-item{display:flex;gap:18px;align-items:flex-start}
+.at-dot{width:40px;height:40px;border-radius:50%;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;margin-top:2px}
+.at-content{}
+.at-year{font-size:.68rem;font-weight:700;color:var(--terra);letter-spacing:.1em;text-transform:uppercase;margin-bottom:4px}
+.at-title{font-size:.9rem;font-weight:700;color:var(--forest);margin-bottom:4px}
+.at-desc{font-size:.78rem;color:var(--gray);line-height:1.6}
+.values-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+.value-card{background:var(--sage-p);border-radius:14px;padding:20px;border-left:3px solid var(--sage)}
+.value-icon{font-size:1.4rem;margin-bottom:8px}
+.value-title{font-size:.88rem;font-weight:700;color:var(--forest);margin-bottom:5px}
+.value-desc{font-size:.75rem;color:var(--gray);line-height:1.6}
+
+/* ═══════════════════════════════════════════════
+   ████  CONTACT PAGE  ████
+═══════════════════════════════════════════════ */
+.contact-layout{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contact-info{}
+.ci-item{display:flex;gap:16px;align-items:flex-start;margin-bottom:28px}
+.ci-icon{width:48px;height:48px;border-radius:14px;background:var(--sage-p);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.ci-label{font-size:.72rem;font-weight:700;color:var(--gray);letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
+.ci-value{font-size:.9rem;font-weight:600;color:var(--forest)}
+.consult-card{background:var(--forest);border-radius:var(--r);padding:36px;margin-top:32px}
+.cc-title{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:16px}
+.cc-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.cc-features li{font-size:.82rem;color:rgba(255,255,255,.8);display:flex;align-items:center;gap:10px}
+.cc-features li::before{content:'✓';width:20px;height:20px;border-radius:50%;background:var(--sage-m);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0}
+.contact-form{background:#fff;border-radius:var(--r);padding:40px;box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;font-size:.78rem;font-weight:700;color:var(--forest);margin-bottom:7px;letter-spacing:.03em}
+.form-group input,.form-group textarea,.form-group select{
+  width:100%;padding:13px 16px;border:1.5px solid var(--lgray);border-radius:12px;
+  font-size:.86rem;font-family:'Poppins',sans-serif;color:var(--charcoal);outline:none;transition:border .2s;
+}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--sage-m);box-shadow:0 0 0 3px rgba(90,140,106,.12)}
+.form-group textarea{resize:vertical;min-height:120px}
+.form-submit{width:100%}
+.form-note{font-size:.74rem;color:var(--gray);text-align:center;margin-top:14px}
+
+/* ═══════════════════════════════════════════════
+   ████  LOGIN / DASHBOARD  ████
+═══════════════════════════════════════════════ */
+.auth-wrap{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--forest),var(--forest-l));
+  padding:100px 20px 40px;
+}
+.auth-card{
+  background:#fff;border-radius:24px;padding:48px;width:100%;max-width:440px;
+  box-shadow:0 40px 100px rgba(0,0,0,.25);
+}
+.auth-logo{text-align:center;margin-bottom:32px}
+.auth-logo-icon{width:60px;height:60px;border-radius:18px;background:linear-gradient(135deg,var(--forest),var(--sage-m));display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 12px;box-shadow:0 8px 24px rgba(31,61,54,.3)}
+.auth-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--forest);text-align:center;margin-bottom:6px}
+.auth-sub{font-size:.82rem;color:var(--gray);text-align:center;margin-bottom:32px}
+.auth-tab-row{display:flex;background:var(--sage-p);border-radius:12px;padding:4px;margin-bottom:28px}
+.auth-tab{flex:1;padding:10px;text-align:center;border-radius:10px;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--gray)}
+.auth-tab.active{background:#fff;color:var(--forest);box-shadow:0 2px 10px rgba(31,61,54,.1)}
+.auth-form .form-group{margin-bottom:18px}
+.auth-form .form-group label{font-size:.76rem;font-weight:600;color:var(--forest);display:block;margin-bottom:6px}
+.auth-form .form-group input{width:100%;padding:12px 16px;border:1.5px solid var(--lgray);border-radius:10px;font-family:'Poppins',sans-serif;font-size:.86rem;outline:none;transition:border .2s}
+.auth-form .form-group input:focus{border-color:var(--sage-m)}
+.auth-submit{width:100%;padding:14px;background:var(--terra);color:#fff;border:none;border-radius:12px;font-size:.9rem;font-weight:700;font-family:'Poppins',sans-serif;cursor:pointer;transition:all .25s;margin-top:8px;margin-bottom:16px}
+.auth-submit:hover{background:var(--terra-d);transform:translateY(-1px)}
+.auth-or{text-align:center;font-size:.78rem;color:var(--gray);margin:16px 0;position:relative}
+.auth-or::before,.auth-or::after{content:'';position:absolute;top:50%;width:38%;height:1px;background:var(--lgray)}
+.auth-or::before{left:0}.auth-or::after{right:0}
+.auth-social{display:flex;gap:10px}
+.auth-social-btn{flex:1;padding:11px;border:1.5px solid var(--lgray);border-radius:10px;background:transparent;font-family:'Poppins',sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;color:var(--charcoal)}
+.auth-social-btn:hover{border-color:var(--sage-m);background:var(--sage-p)}
+
+/* Dashboard */
+.dash-wrap{padding:100px 5% 60px;max-width:1140px;margin:0 auto}
+.dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.dash-greeting{}
+.dash-greeting h2{font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--forest)}
+.dash-greeting p{font-size:.84rem;color:var(--gray);margin-top:4px}
+.dash-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-bottom:28px}
+.dash-stat{background:#fff;border-radius:var(--r);padding:24px;box-shadow:0 4px 20px rgba(31,61,54,.06);border:1px solid var(--lgray)}
+.ds-icon{font-size:1.6rem;margin-bottom:12px}
+.ds-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--gray);margin-bottom:6px}
+.ds-value{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:var(--forest);line-height:1}
+.ds-value span{font-size:.9rem;color:var(--terra)}
+.ds-change{font-size:.72rem;color:var(--sage);margin-top:4px}
+.dash-main{display:grid;grid-template-columns:1.5fr 1fr;gap:24px;margin-bottom:24px}
+.dash-card{background:#fff;border-radius:var(--r);padding:28px;box-shadow:0 4px 20px rgba(31,61,54,.06);border:1px solid var(--lgray)}
+.dash-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--forest);margin-bottom:20px}
+.progress-item{margin-bottom:18px}
+.pi-row{display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:6px}
+.pi-label{font-weight:600;color:var(--forest)}
+.pi-val{color:var(--gray)}
+.progress-bar{height:8px;background:var(--lgray);border-radius:50px;overflow:hidden}
+.progress-fill{height:100%;border-radius:50px;background:linear-gradient(90deg,var(--sage-m),var(--sage));transition:width 1s ease}
+.progress-fill.terra{background:linear-gradient(90deg,var(--terra),var(--terra-l))}
+.progress-fill.gold{background:linear-gradient(90deg,var(--gold),var(--gold-l))}
+.meal-today-list{display:flex;flex-direction:column;gap:10px}
+.mtl-item{display:flex;align-items:center;gap:12px;padding:10px;background:var(--sage-p);border-radius:10px}
+.mtl-emoji{font-size:1.1rem;width:28px;text-align:center}
+.mtl-food{flex:1;font-size:.8rem;font-weight:600;color:var(--forest)}
+.mtl-cal{font-size:.72rem;color:var(--gray)}
+.mtl-check{width:22px;height:22px;border-radius:50%;border:2px solid var(--sage-l);display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:pointer;flex-shrink:0;transition:all .2s}
+.mtl-check.done{background:var(--sage);border-color:var(--sage);color:#fff}
+
+/* ═══════════════════════════════════════════════
+   FLOATING ELEMENTS
+═══════════════════════════════════════════════ */
+/* WhatsApp */
+#wa-btn{
+  position:fixed;bottom:28px;left:28px;z-index:888;
+  width:58px;height:58px;border-radius:50%;
+  background:#25D366;color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;text-decoration:none;
+  box-shadow:0 8px 28px rgba(37,211,102,.4);
+  transition:all .25s;
+  animation:waPulse 2.5s ease-in-out infinite;
+}
+#wa-btn:hover{transform:scale(1.12);box-shadow:0 12px 36px rgba(37,211,102,.5)}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 28px rgba(37,211,102,.4)}50%{box-shadow:0 8px 40px rgba(37,211,102,.7)}}
+
+/* AI Chat */
+#chat-widget{position:fixed;bottom:28px;right:28px;z-index:889}
+#chat-toggle{
+  width:58px;height:58px;border-radius:50%;
+  background:linear-gradient(135deg,var(--forest),var(--sage-m));
+  color:#fff;border:none;cursor:pointer;font-size:1.5rem;
+  box-shadow:0 8px 28px rgba(31,61,54,.4);transition:all .25s;
+  display:flex;align-items:center;justify-content:center;
+}
+#chat-toggle:hover{transform:scale(1.1)}
+#chat-box{
+  position:absolute;bottom:70px;right:0;
+  width:320px;background:#fff;border-radius:20px;
+  box-shadow:0 20px 60px rgba(0,0,0,.2);
+  overflow:hidden;display:none;
+  animation:chatIn .3s ease;
+}
+@keyframes chatIn{from{opacity:0;transform:translateY(20px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+#chat-box.open{display:flex;flex-direction:column}
+.chat-head{background:linear-gradient(135deg,var(--forest),var(--sage-m));padding:18px 20px;display:flex;align-items:center;gap:12px}
+.chat-head-av{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.chat-head-info{}
+.chat-head-name{font-size:.88rem;font-weight:700;color:#fff}
+.chat-head-status{font-size:.68rem;color:rgba(168,197,176,.9);display:flex;align-items:center;gap:5px}
+.chat-head-status::before{content:'';width:7px;height:7px;border-radius:50%;background:#4ade80}
+.chat-messages{height:260px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:var(--cream)}
+.chat-msg{max-width:85%;padding:10px 14px;border-radius:14px;font-size:.8rem;line-height:1.55}
+.chat-msg.bot{background:#fff;color:var(--charcoal);align-self:flex-start;border-bottom-left-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.chat-msg.user{background:var(--forest);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.chat-msg.typing{background:#fff;align-self:flex-start;display:flex;gap:4px;align-items:center;padding:12px 16px}
+.typing-dot{width:7px;height:7px;border-radius:50%;background:var(--gray);animation:typingBounce 1.2s ease infinite}
+.typing-dot:nth-child(2){animation-delay:.2s}
+.typing-dot:nth-child(3){animation-delay:.4s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.chat-input-row{display:flex;gap:8px;padding:12px 14px;border-top:1px solid var(--lgray)}
+#chat-input{flex:1;padding:10px 14px;border:1.5px solid var(--lgray);border-radius:50px;font-size:.8rem;font-family:'Poppins',sans-serif;outline:none;transition:border .2s}
+#chat-input:focus{border-color:var(--sage-m)}
+#chat-send{width:38px;height:38px;border-radius:50%;background:var(--forest);color:#fff;border:none;cursor:pointer;font-size:1rem;transition:background .2s;display:flex;align-items:center;justify-content:center}
+#chat-send:hover{background:var(--sage)}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:6px;padding:8px 14px 0;border-top:1px solid var(--lgray)}
+.chat-sugg{font-size:.7rem;background:var(--sage-p);color:var(--sage);border:none;padding:5px 12px;border-radius:50px;cursor:pointer;font-family:'Poppins',sans-serif;transition:all .2s}
+.chat-sugg:hover{background:var(--sage);color:#fff}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer{background:var(--charcoal);color:rgba(255,255,255,.55);padding:72px 5% 36px}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:56px;margin-bottom:56px}
+.footer-brand-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:12px}
+.footer-brand-logo span{color:var(--gold)}
+.footer-tagline{font-size:.8rem;line-height:1.75;max-width:240px;margin-bottom:20px}
+.footer-socials{display:flex;gap:10px}
+.fsoc-btn{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.9rem;cursor:pointer;transition:all .2s;text-decoration:none}
+.fsoc-btn:hover{border-color:var(--gold);background:rgba(212,175,55,.15)}
+.footer-col h4{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-bottom:18px;font-family:'Poppins',sans-serif}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:.8rem;color:rgba(255,255,255,.45);transition:color .2s;cursor:pointer}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;border-top:1px solid rgba(255,255,255,.07);font-size:.74rem;flex-wrap:wrap;gap:10px}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .grid-4,.stats-grid,.dash-grid{grid-template-columns:repeat(2,1fr)}
+  .prog-grid,.testi-grid,.blog-grid,.blog-full-grid,.cond-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .insta-grid{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:768px){
+  #navbar{padding:14px 5%}
+  .nav-links,.nav-right{display:none}
+  .hamburger{display:flex}
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:70px 5% 40px}
+  .hero-right{padding:0 5% 60px}
+  .hero-main-img{height:360px;border-radius:24px 24px 80px 24px}
+  .hero-card-1{left:-10px;bottom:-16px}
+  .hero-card-2{right:-10px;top:20px}
+  .section{padding:70px 5%}
+  .about-snap-inner,.about-page-grid,.contact-layout,.meal-layout{grid-template-columns:1fr}
+  .grid-2,.prog-full-grid,.tools-grid,.dash-main{grid-template-columns:1fr}
+  .cond-grid,.prog-grid,.testi-grid,.blog-grid,.blog-full-grid{grid-template-columns:1fr}
+  .stats-grid,.dash-grid{grid-template-columns:repeat(2,1fr)}
+  .insta-grid{grid-template-columns:repeat(3,1fr)}
+  .form-row{grid-template-columns:1fr}
+  .tb-item{border-right:none;width:50%}
+  .footer-top{grid-template-columns:1fr}
+  .food-results{grid-template-columns:1fr}
+  .cta-btn-row{flex-direction:column;align-items:center}
+  .hero-btns{flex-direction:column;align-items:flex-start}
+}
+@media(max-width:480px){
+  .stats-grid,.dash-grid,.grid-3{grid-template-columns:1fr}
+  .insta-grid{grid-template-columns:repeat(2,1fr)}
+  .hero-card-1,.hero-card-2{display:none}
+  .auth-card{padding:32px 24px}
+}
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+  NAVBAR
+════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="logo" onclick="showPage('home')">
+    <div class="logo-icon">🌿</div>
+    <div class="logo-text">
+      <div class="logo-name">Kajal<span>.</span></div>
+      <div class="logo-sub">Nutrition Studio</div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a onclick="showPage('home')" class="active" data-page="home">Home</a></li>
+    <li><a onclick="showPage('programs')" data-page="programs">Programs</a></li>
+    <li><a onclick="showPage('tools')" data-page="tools">Tools</a></li>
+    <li><a onclick="showPage('blog')" data-page="blog">Articles</a></li>
+    <li><a onclick="showPage('about')" data-page="about">About</a></li>
+    <li><a onclick="showPage('contact')" data-page="contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <button class="nav-btn nav-btn-outline" onclick="showPage('login')">Login</button>
+    <button class="nav-btn nav-btn-fill" onclick="showPage('contact')">Book Free Call</button>
+  </div>
+  <div class="hamburger" onclick="toggleMobile()" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a onclick="showPage('home');toggleMobile()">🏠 Home</a>
+  <a onclick="showPage('programs');toggleMobile()">💪 Programs</a>
+  <a onclick="showPage('tools');toggleMobile()">🧮 Tools</a>
+  <a onclick="showPage('blog');toggleMobile()">📰 Articles</a>
+  <a onclick="showPage('about');toggleMobile()">👩 About</a>
+  <a onclick="showPage('contact');toggleMobile()">📞 Contact</a>
+  <a onclick="showPage('login');toggleMobile()">🔐 Login</a>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  HOME PAGE  ████
+════════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <svg class="hero-leaf" style="top:15%;left:4%;width:70px;animation-delay:0s" viewBox="0 0 60 80" fill="#3D6B4F"><path d="M30 0C30 0 60 20 55 50C50 75 30 80 30 80C30 80 10 75 5 50C0 20 30 0 30 0Z"/></svg>
+    <svg class="hero-leaf" style="top:55%;right:6%;width:50px;animation-delay:3s" viewBox="0 0 60 80" fill="#C56A4A"><path d="M30 0C30 0 60 20 55 50C50 75 30 80 30 80C30 80 10 75 5 50C0 20 30 0 30 0Z"/></svg>
+
+    <div class="hero-left">
+      <div class="hero-eyebrow">✦ Certified Dietician & Nutritionist</div>
+      <h1 class="hero-h1">Fix Your Hormones.<br><em>Lose Weight</em> Naturally.</h1>
+      <p class="hero-tagline">Balance Your Body. Transform Your Life.</p>
+      <p class="hero-desc">Personalised diet, lifestyle, and yoga-based solutions for sustainable transformation. Real Indian food. Real results. No crash diets.</p>
+      <div class="hero-btns">
+        <a class="btn btn-forest" onclick="showPage('contact')">Start Your Health Reset →</a>
+        <a class="btn btn-outline-t" onclick="showPage('contact')">Book Free Consultation</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-avatars">
+          <div class="trust-avatar">😊</div>
+          <div class="trust-avatar">🙋</div>
+          <div class="trust-avatar">👩</div>
+          <div class="trust-avatar">🧑</div>
+        </div>
+        <div class="trust-info">
+          <div class="trust-stars">★★★★★</div>
+          <div class="trust-text"><strong>500+ clients</strong> transformed across India & globally</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-wrap">
+        <div class="hero-badge-img">🌿 100% Vegetarian Indian Plans</div>
+        <img class="hero-main-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=800&q=85" alt="Healthy nutrition"/>
+        <div class="hero-card-1">
+          <div class="hc-lbl">Daily Target</div>
+          <div class="hc-val">1,800</div>
+          <div class="hc-sub">kcal · 90g protein daily</div>
+        </div>
+        <div class="hero-card-2">
+          <div class="hc2-row"><div class="hc2-dot"></div><div class="hc2-text">Personalised Plan</div></div>
+          <div class="hc2-row"><div class="hc2-dot gold"></div><div class="hc2-text">WhatsApp Support</div></div>
+          <div class="hc2-row"><div class="hc2-dot terra"></div><div class="hc2-text">Weekly Check-ins</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="tb-item"><span class="tb-icon">🎓</span> BSc Clinical Nutrition</div>
+    <div class="tb-item"><span class="tb-icon">🏅</span> Certified Diabetes Educator</div>
+    <div class="tb-item"><span class="tb-icon">🧘</span> Yoga Nutrition Specialist</div>
+    <div class="tb-item"><span class="tb-icon">💬</span> WhatsApp Support Included</div>
+    <div class="tb-item"><span class="tb-icon">⭐</span> 4.9 / 5 Client Rating</div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats-section">
+    <div class="stats-grid">
+      <div class="stat-card reveal"><div class="stat-num">500<span>+</span></div><div class="stat-label">Clients Transformed</div></div>
+      <div class="stat-card reveal delay-1"><div class="stat-num">8<span>+</span></div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-card reveal delay-2"><div class="stat-num">98<span>%</span></div><div class="stat-label">Success Rate</div></div>
+      <div class="stat-card reveal delay-3"><div class="stat-num">12<span>+</span></div><div class="stat-label">Conditions Treated</div></div>
+    </div>
+  </section>
+
+  <!-- ABOUT SNAPSHOT -->
+  <section class="section about-snap">
+    <div class="about-snap-inner">
+      <div class="about-img-wrap reveal">
+        <img class="about-main-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&q=85" alt="Healthy food preparation"/>
+        <div class="about-exp-badge">
+          <div class="exp-num">8+</div>
+          <div class="exp-lbl">Years of Excellence</div>
+        </div>
+      </div>
+      <div class="reveal delay-1">
+        <div class="section-tag">Meet Kajal</div>
+        <h2 class="section-title">I fix lifestyles,<br>not just <em>diets</em></h2>
+        <p class="section-desc" style="margin-bottom:20px">Hi, I'm Kajal Shrivastava — a certified dietician and nutritionist with 8+ years of experience helping women and men reclaim their health through science-backed, sustainable nutrition.</p>
+        <p style="font-size:.88rem;color:var(--gray);line-height:1.8;margin-bottom:28px">My approach: real food, real habits, real results. No crash diets, no starvation. Every programme is built around your body, your culture, and your life.</p>
+        <div class="about-certs">
+          <div class="cert-item"><div class="cert-check">✓</div> BSc Clinical Nutrition & Dietetics</div>
+          <div class="cert-item"><div class="cert-check">✓</div> Certified Diabetes Educator (CDE)</div>
+          <div class="cert-item"><div class="cert-check">✓</div> Yoga & Holistic Nutrition Specialist</div>
+          <div class="cert-item"><div class="cert-check">✓</div> PCOS & Hormonal Health Expert</div>
+        </div>
+        <a class="btn btn-forest" style="margin-top:28px" onclick="showPage('about')">Learn More About Kajal →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONDITIONS -->
+  <section class="section conditions">
+    <div class="section-inner">
+      <div class="section-tag reveal">What I Help You With</div>
+      <h2 class="section-title reveal">Conditions I <em>specialise</em> in</h2>
+      <div class="cond-grid">
+        <div class="cond-card reveal"><img class="cond-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="PCOS"/><div class="cond-overlay"><div class="cond-icon-wrap">🌸</div><div class="cond-name">PCOS / PCOD</div><div class="cond-desc">Balance hormones naturally through anti-inflammatory foods and cycle-syncing nutrition.</div><div class="cond-btn">Learn More →</div></div></div>
+        <div class="cond-card reveal delay-1"><img class="cond-img" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80" alt="Weight Loss"/><div class="cond-overlay"><div class="cond-icon-wrap">🔥</div><div class="cond-name">Weight Loss</div><div class="cond-desc">Sustainable fat loss without deprivation, using high-satiety Indian foods.</div><div class="cond-btn">Learn More →</div></div></div>
+        <div class="cond-card reveal delay-2"><img class="cond-img" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80" alt="Diabetes"/><div class="cond-overlay"><div class="cond-icon-wrap">🩸</div><div class="cond-name">Type 2 Diabetes</div><div class="cond-desc">Control blood sugar with low-glycaemic Indian meal plans and lifestyle change.</div><div class="cond-btn">Learn More →</div></div></div>
+        <div class="cond-card reveal"><img class="cond-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Gut Health"/><div class="cond-overlay"><div class="cond-icon-wrap">🦠</div><div class="cond-name">Gut Health (IBS / Bloating)</div><div class="cond-desc">Heal your gut microbiome with probiotics, prebiotics, and elimination protocols.</div><div class="cond-btn">Learn More →</div></div></div>
+        <div class="cond-card reveal delay-1"><img class="cond-img" src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=600&q=80" alt="Thyroid"/><div class="cond-overlay"><div class="cond-icon-wrap">🦋</div><div class="cond-name">Thyroid Imbalance</div><div class="cond-desc">Support thyroid function with nutrient-dense, iodine-balanced meal plans.</div><div class="cond-btn">Learn More →</div></div></div>
+        <div class="cond-card reveal delay-2"><img class="cond-img" src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80" alt="Sleep"/><div class="cond-overlay"><div class="cond-icon-wrap">😴</div><div class="cond-name">Sleep Cycle Issues</div><div class="cond-desc">Reset cortisol, melatonin, and sleep cycles naturally through bedtime nutrition.</div><div class="cond-btn">Learn More →</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMS PREVIEW -->
+  <section class="section programs-prev">
+    <div class="section-inner">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:56px">
+        <div>
+          <div class="section-tag" style="color:var(--gold)"><span style="width:28px;height:2px;background:var(--gold);display:inline-block"></span> Programs</div>
+          <h2 class="section-title" style="color:#fff;margin-bottom:0">Choose your <em style="color:var(--sage-l)">transformation</em> path</h2>
+        </div>
+        <a class="btn btn-gold btn-sm" onclick="showPage('programs')">View All Programs →</a>
+      </div>
+      <div class="prog-grid">
+        <div class="prog-card reveal"><div class="prog-num">01</div><div class="prog-icon">🔥</div><div class="prog-tag">Most Popular</div><div class="prog-name">Fat Loss Transformation</div><div class="prog-desc">Strategic calorie-deficit plans using high-satiety Indian foods. Lose fat without starving, while maintaining energy and muscle.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+        <div class="prog-card reveal delay-1"><div class="prog-num">02</div><div class="prog-icon">🌸</div><div class="prog-tag">Top for Women</div><div class="prog-name">PCOS Balance Program</div><div class="prog-desc">Hormone-healing nutrition protocol targeting insulin resistance, inflammation, and androgen imbalance through real food.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+        <div class="prog-card reveal delay-2"><div class="prog-num">03</div><div class="prog-icon">🩸</div><div class="prog-tag">Clinical Grade</div><div class="prog-name">Diabetes Care Plan</div><div class="prog-desc">Evidence-based dietary protocol to naturally control blood glucose and reduce HbA1c through Indian meals.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+        <div class="prog-card reveal"><div class="prog-num">04</div><div class="prog-icon">🦠</div><div class="prog-tag">4 Week Reset</div><div class="prog-name">Gut Health Reset</div><div class="prog-desc">Comprehensive gut healing protocol combining probiotics, prebiotics, and anti-inflammatory foods for lasting digestive health.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+        <div class="prog-card reveal delay-1"><div class="prog-num">05</div><div class="prog-icon">🤰</div><div class="prog-tag">Specialist Care</div><div class="prog-name">Prenatal & Postnatal Care</div><div class="prog-desc">Nutrient-dense plans for every trimester and recovery phase, supporting both mother and baby's health beautifully.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+        <div class="prog-card reveal delay-2"><div class="prog-num">06</div><div class="prog-icon">👶</div><div class="prog-tag">Age 4–16 Years</div><div class="prog-name">Kids Nutrition</div><div class="prog-desc">Fun, balanced meal plans that kids actually enjoy — building healthy habits for growth, focus, and lifelong wellness.</div><a class="prog-link" onclick="showPage('programs')">Enrol Now →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEAL PLAN PREVIEW -->
+  <section class="section meal-prev">
+    <div class="section-inner">
+      <div class="section-tag reveal">Sample Meal Plan</div>
+      <h2 class="section-title reveal">Balanced Indian meals <em>tailored</em> to you</h2>
+      <div class="meal-layout">
+        <div class="meal-imgs reveal">
+          <img class="meal-img-big" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=800&q=85" alt="Indian thali meal"/>
+          <img class="meal-img-sm" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&q=80" alt="Oats breakfast"/>
+          <img class="meal-img-sm" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&q=80" alt="Healthy salad bowl"/>
+        </div>
+        <div class="reveal delay-1">
+          <div class="meal-plan-card">
+            <div class="mpc-header">
+              <div class="mpc-title">Monday — Fat Loss Plan</div>
+              <div class="mpc-badge">1,800 kcal</div>
+            </div>
+            <div class="mpc-row"><div class="mpc-time">6:30 AM</div><div class="mpc-emoji">🌅</div><div class="mpc-food">Warm lemon water + soaked almonds</div><div class="mpc-kcal">~45</div></div>
+            <div class="mpc-row"><div class="mpc-time">8:30 AM</div><div class="mpc-emoji">🥣</div><div class="mpc-food">Oats porridge + berries + seeds</div><div class="mpc-kcal">~320</div></div>
+            <div class="mpc-row"><div class="mpc-time">1:00 PM</div><div class="mpc-emoji">🍛</div><div class="mpc-food">Dal + 2 roti + sabzi + curd</div><div class="mpc-kcal">~480</div></div>
+            <div class="mpc-row"><div class="mpc-time">4:30 PM</div><div class="mpc-emoji">🍵</div><div class="mpc-food">Green tea + roasted chana</div><div class="mpc-kcal">~120</div></div>
+            <div class="mpc-row"><div class="mpc-time">8:30 PM</div><div class="mpc-emoji">🌙</div><div class="mpc-food">Moong dal khichdi + salad</div><div class="mpc-kcal">~350</div></div>
+            <div class="mpc-row"><div class="mpc-time">10:00 PM</div><div class="mpc-emoji">🥛</div><div class="mpc-food">Warm turmeric milk</div><div class="mpc-kcal">~80</div></div>
+            <div class="macro-row">
+              <div class="macro-m"><div class="macro-v">1800<em>kcal</em></div><div class="macro-l">Calories</div></div>
+              <div class="macro-m"><div class="macro-v">90<em>g</em></div><div class="macro-l">Protein</div></div>
+              <div class="macro-m"><div class="macro-v">220<em>g</em></div><div class="macro-l">Carbs</div></div>
+              <div class="macro-m"><div class="macro-v">48<em>g</em></div><div class="macro-l">Fats</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section testi" id="results">
+    <div class="section-inner">
+      <div class="section-tag reveal">Client Results</div>
+      <h2 class="section-title reveal">Real people, <em>real results</em></h2>
+      <div class="testi-grid">
+        <div class="testi-card reveal"><div class="testi-result-tag">−8 kg</div><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-text">Kajal's plans are the first diet I've ever actually followed. The food is delicious, practical, and I lost 8 kg in 3 months without feeling deprived once.</div><div class="testi-author"><div class="testi-av">P</div><div><div class="testi-name">Priya Mehta</div><div class="testi-loc">Fat Loss Programme · Mumbai</div></div></div></div>
+        <div class="testi-card reveal delay-1"><div class="testi-result-tag">PCOS Reversed</div><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-text">My PCOS symptoms improved dramatically in 2 months. Kajal understands both the medical and practical side — she's genuinely exceptional at what she does.</div><div class="testi-author"><div class="testi-av">R</div><div><div class="testi-name">Ritu Agarwal</div><div class="testi-loc">PCOS Balance Plan · Delhi</div></div></div></div>
+        <div class="testi-card reveal delay-2"><div class="testi-result-tag">HbA1c Normal</div><div class="testi-q">"</div><div class="testi-stars">★★★★★</div><div class="testi-text">My HbA1c went from 8.2 to 5.9 in 4 months. The meal plan is completely Indian, absolutely delicious, and my doctor is thrilled with my progress.</div><div class="testi-author"><div class="testi-av">S</div><div><div class="testi-name">Suresh Kumar</div><div class="testi-loc">Diabetes Care Plan · Bangalore</div></div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG PREVIEW -->
+  <section class="section blog-prev">
+    <div class="section-inner">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:56px">
+        <div><div class="section-tag reveal">Health Articles</div><h2 class="section-title reveal" style="margin-bottom:0">Read. Learn. <em>Transform.</em></h2></div>
+        <a class="btn btn-outline-f btn-sm" onclick="showPage('blog')">All Articles →</a>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card reveal"><img class="blog-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="PCOS"/><div class="blog-body"><div class="blog-cat">Hormonal Health</div><div class="blog-title">Can PCOS Be Managed Naturally?</div><div class="blog-excerpt">Discover how anti-inflammatory foods, cycle-syncing nutrition, and lifestyle changes can reverse PCOS symptoms without medication.</div><span class="blog-read" onclick="showPage('blog')">Read Article →</span></div></div>
+        <div class="blog-card reveal delay-1"><img class="blog-img" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80" alt="Weight Loss"/><div class="blog-body"><div class="blog-cat">Fat Loss</div><div class="blog-title">Why Your Weight Loss Is Stuck</div><div class="blog-excerpt">Plateaus are caused by metabolic adaptation, hormone imbalance, or hidden calorie creep. Here's exactly how to break through it.</div><span class="blog-read" onclick="showPage('blog')">Read Article →</span></div></div>
+        <div class="blog-card reveal delay-2"><img class="blog-img" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80" alt="Diabetes"/><div class="blog-body"><div class="blog-cat">Diabetes</div><div class="blog-title">Best Indian Diet for Diabetes</div><div class="blog-excerpt">From methi to karela to brown rice — a practical guide to the best blood-sugar-friendly foods already in your Indian kitchen.</div><span class="blog-read" onclick="showPage('blog')">Read Article →</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIP OF THE DAY -->
+  <section class="section tip-section">
+    <div class="tip-card">
+      <div class="tip-bulb">💡</div>
+      <div class="tip-body">
+        <div class="tip-lbl">Tip of the Day</div>
+        <div class="tip-text-d" id="tip-text">Start your day with warm water and soaked seeds for better digestion.</div>
+        <button class="tip-refresh" onclick="refreshTip()">↻ New Tip</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="section insta">
+    <div class="section-inner" style="text-align:center">
+      <div class="section-tag" style="justify-content:center">Social Media</div>
+      <h2 class="section-title">Follow for daily <em>nutrition</em> inspiration</h2>
+      <div class="insta-handle">📸 @kajalnutrition</div>
+      <div class="insta-grid">
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+        <div class="insta-item"><img class="insta-img" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&q=80" alt=""/><div class="insta-overlay">❤️</div></div>
+      </div>
+      <a class="btn btn-forest" href="https://instagram.com/kajalnutrition" target="_blank">Follow @kajalnutrition</a>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <h2>Ready to Transform Your Health?</h2>
+    <p>Book a free 15-minute consultation — let's design your personalised nutrition journey.</p>
+    <div class="cta-btn-row">
+      <a class="btn btn-white" onclick="showPage('contact')">Book Free Consultation →</a>
+      <a class="btn" style="border:2px solid rgba(255,255,255,.6);color:#fff;background:transparent" href="https://wa.me/919999999999" target="_blank">💬 WhatsApp Me</a>
+    </div>
+  </section>
+
+</div><!-- end home -->
+
+<!-- ════════════════════════════════════
+  ████  PROGRAMS PAGE  ████
+════════════════════════════════════ -->
+<div class="page" id="page-programs">
+  <div class="page-hero">
+    <h1>Transformation <em>Programs</em></h1>
+    <p>Science-backed, culturally rooted nutrition programmes designed for lasting results — not quick fixes.</p>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="prog-full-grid">
+        <div class="prog-full-card reveal">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=700&q=80" alt="Fat Loss"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">🔥</div><div class="pfc-tag">Most Popular</div></div>
+            <div class="pfc-name">Fat Loss Transformation</div>
+            <div class="pfc-desc">A strategic, sustainable fat loss programme using high-satiety Indian foods. Lose fat without starving while maintaining energy, muscle, and metabolic health.</div>
+            <ul class="pfc-features">
+              <li>Personalised 7-day meal plan updated weekly</li>
+              <li>Macro & calorie tracking guide</li>
+              <li>WhatsApp support + weekly check-ins</li>
+              <li>Grocery shopping list + meal prep guide</li>
+              <li>Exercise & cardio protocol included</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>8–12 Weeks</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+        <div class="prog-full-card reveal delay-1">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&q=80" alt="PCOS"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">🌸</div><div class="pfc-tag">Top for Women</div></div>
+            <div class="pfc-name">PCOS Balance Program</div>
+            <div class="pfc-desc">A hormone-healing nutrition protocol targeting insulin resistance, inflammation, and androgen imbalance. Designed specifically for Indian women with PCOS/PCOD.</div>
+            <ul class="pfc-features">
+              <li>Anti-inflammatory, low-GI Indian meal plan</li>
+              <li>Cycle-syncing nutrition guide</li>
+              <li>Supplement recommendations (food-first)</li>
+              <li>Lifestyle, sleep & stress protocol</li>
+              <li>Monthly hormone health review</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>12 Weeks</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+        <div class="prog-full-card reveal">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=700&q=80" alt="Diabetes"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">🩸</div><div class="pfc-tag">Clinical Grade</div></div>
+            <div class="pfc-name">Diabetes Care Plan</div>
+            <div class="pfc-desc">Evidence-based dietary protocol to naturally control blood glucose, reduce HbA1c, and reverse pre-diabetes through traditional Indian foods and lifestyle.</div>
+            <ul class="pfc-features">
+              <li>Low-glycaemic Indian meal plan</li>
+              <li>Blood sugar monitoring & food diary guide</li>
+              <li>Doctor-aligned protocol</li>
+              <li>Dining-out & festival eating guide</li>
+              <li>Carb counting & portion guide</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>16 Weeks</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+        <div class="prog-full-card reveal delay-1">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=700&q=80" alt="Gut Health"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">🦠</div><div class="pfc-tag">4-Week Reset</div></div>
+            <div class="pfc-name">Gut Health Reset</div>
+            <div class="pfc-desc">A comprehensive 4-week gut healing protocol combining probiotics, prebiotics, and anti-inflammatory foods for lasting digestive health and improved immunity.</div>
+            <ul class="pfc-features">
+              <li>Elimination & reintroduction plan</li>
+              <li>Probiotic food protocol (dahi, kanji, idli)</li>
+              <li>Gut-brain connection guidance</li>
+              <li>Stress & sleep optimisation protocol</li>
+              <li>IBS, acidity & bloating management guide</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>4–8 Weeks</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+        <div class="prog-full-card reveal">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1556911073-52527ac43761?w=700&q=80" alt="Prenatal"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">🤰</div><div class="pfc-tag">Specialist Care</div></div>
+            <div class="pfc-name">Prenatal & Postnatal Care</div>
+            <div class="pfc-desc">Trimester-specific, nutrient-dense Indian meal plans supporting baby's development, managing pregnancy symptoms, and restoring health post-delivery.</div>
+            <ul class="pfc-features">
+              <li>Trimester-specific meal plans</li>
+              <li>Iron, folate & calcium-rich recipes</li>
+              <li>Morning sickness & heartburn management</li>
+              <li>Breastfeeding & lactation nutrition</li>
+              <li>Postpartum recovery protocol</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>Throughout pregnancy</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+        <div class="prog-full-card reveal delay-1">
+          <img class="pfc-img" src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=700&q=80" alt="Kids Nutrition"/>
+          <div class="pfc-body">
+            <div class="pfc-icon-row"><div class="pfc-icon">👶</div><div class="pfc-tag">Age 4–16 Years</div></div>
+            <div class="pfc-name">Kids Nutrition Program</div>
+            <div class="pfc-desc">Fun, balanced meal plans that children and teens actually enjoy — building healthy habits for growth, academic focus, energy, and lifelong wellness.</div>
+            <ul class="pfc-features">
+              <li>Age-appropriate calorie & macro plan</li>
+              <li>School lunchbox & snack ideas</li>
+              <li>Brain-boosting foods for focus</li>
+              <li>Growth & immunity support protocol</li>
+              <li>Fussy-eater strategies for parents</li>
+            </ul>
+            <div class="pfc-footer"><div class="pfc-duration">Duration: <strong>8 Weeks</strong></div><a class="btn btn-terra btn-sm" onclick="showPage('contact')">Enrol Now →</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="cta-banner">
+    <h2>Not sure which program is right for you?</h2>
+    <p>Book a free 15-minute discovery call and I'll guide you to the perfect plan.</p>
+    <div class="cta-btn-row"><a class="btn btn-white" onclick="showPage('contact')">Book Free Consultation →</a></div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  TOOLS PAGE  ████
+════════════════════════════════════ -->
+<div class="page" id="page-tools">
+  <div class="page-hero">
+    <h1>Health <em>Calculators</em></h1>
+    <p>Free, science-backed tools to understand your body better and plan your nutrition journey.</p>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="tools-grid">
+        <!-- BMI Calculator -->
+        <div class="tool-card reveal">
+          <div class="tool-header"><div class="tool-icon-wrap">⚖️</div><div><div class="tool-name">BMI Calculator</div><div class="tool-sub">Body Mass Index</div></div></div>
+          <div class="tool-fields">
+            <div class="tool-row">
+              <div class="tool-field"><label>Height (cm)</label><input type="number" id="bmi-h" placeholder="e.g. 165"/></div>
+              <div class="tool-field"><label>Weight (kg)</label><input type="number" id="bmi-w" placeholder="e.g. 65"/></div>
+            </div>
+          </div>
+          <button class="tool-calc-btn" onclick="calcBMI()">Calculate BMI</button>
+          <div class="tool-result"><div><div class="tr-label">Your BMI</div><div class="tr-value" id="bmi-result">—</div><div class="tr-category" id="bmi-cat">Enter your details above</div></div><div style="font-size:2rem" id="bmi-emoji">📊</div></div>
+        </div>
+        <!-- Calorie Calculator -->
+        <div class="tool-card reveal delay-1">
+          <div class="tool-header"><div class="tool-icon-wrap">🔥</div><div><div class="tool-name">Calorie Calculator</div><div class="tool-sub">Daily calorie needs (TDEE)</div></div></div>
+          <div class="tool-fields">
+            <div class="tool-row">
+              <div class="tool-field"><label>Age (years)</label><input type="number" id="cal-age" placeholder="e.g. 28"/></div>
+              <div class="tool-field"><label>Gender</label><select id="cal-gen"><option value="f">Female</option><option value="m">Male</option></select></div>
+            </div>
+            <div class="tool-row">
+              <div class="tool-field"><label>Height (cm)</label><input type="number" id="cal-h" placeholder="e.g. 165"/></div>
+              <div class="tool-field"><label>Weight (kg)</label><input type="number" id="cal-w" placeholder="e.g. 65"/></div>
+            </div>
+            <div class="tool-field"><label>Activity Level</label><select id="cal-act"><option value="1.2">Sedentary (desk job)</option><option value="1.375">Light (1–3 days/week)</option><option value="1.55" selected>Moderate (3–5 days)</option><option value="1.725">Active (6–7 days)</option><option value="1.9">Very Active (athlete)</option></select></div>
+          </div>
+          <button class="tool-calc-btn" onclick="calcCalories()">Calculate Calories</button>
+          <div class="tool-result"><div><div class="tr-label">Daily Calories (TDEE)</div><div class="tr-value" id="cal-result">—</div><div class="tr-category" id="cal-goal">For maintenance</div></div><div style="font-size:2rem">🍽️</div></div>
+        </div>
+        <!-- Protein Calculator -->
+        <div class="tool-card reveal">
+          <div class="tool-header"><div class="tool-icon-wrap">💪</div><div><div class="tool-name">Protein Calculator</div><div class="tool-sub">Daily protein target</div></div></div>
+          <div class="tool-fields">
+            <div class="tool-row">
+              <div class="tool-field"><label>Weight (kg)</label><input type="number" id="prot-w" placeholder="e.g. 65"/></div>
+              <div class="tool-field"><label>Goal</label><select id="prot-goal"><option value="0.8">Weight Maintenance</option><option value="1.2">Fat Loss</option><option value="1.6" selected>Muscle Building</option><option value="2.0">Athletic Performance</option></select></div>
+            </div>
+          </div>
+          <button class="tool-calc-btn" onclick="calcProtein()">Calculate Protein</button>
+          <div class="tool-result"><div><div class="tr-label">Daily Protein</div><div class="tr-value" id="prot-result">—</div><div class="tr-category" id="prot-foods">Enter your details above</div></div><div style="font-size:2rem">🥚</div></div>
+        </div>
+        <!-- Water Calculator -->
+        <div class="tool-card reveal delay-1">
+          <div class="tool-header"><div class="tool-icon-wrap">💧</div><div><div class="tool-name">Water Intake Calculator</div><div class="tool-sub">Daily hydration target</div></div></div>
+          <div class="tool-fields">
+            <div class="tool-row">
+              <div class="tool-field"><label>Weight (kg)</label><input type="number" id="wat-w" placeholder="e.g. 65"/></div>
+              <div class="tool-field"><label>Climate</label><select id="wat-clim"><option value="1">Cool / AC office</option><option value="1.2" selected>Moderate</option><option value="1.4">Hot / Tropical India</option></select></div>
+            </div>
+            <div class="tool-field"><label>Exercise Level</label><select id="wat-ex"><option value="0">No exercise</option><option value="300" selected>30–45 min workout</option><option value="500">1+ hour workout</option></select></div>
+          </div>
+          <button class="tool-calc-btn" onclick="calcWater()">Calculate Water</button>
+          <div class="tool-result"><div><div class="tr-label">Daily Water Target</div><div class="tr-value" id="wat-result">—</div><div class="tr-category" id="wat-glasses">In glasses (250ml each)</div></div><div style="font-size:2rem">🫗</div></div>
+        </div>
+      </div>
+
+      <!-- Food Finder -->
+      <div class="food-finder reveal" style="margin-top:28px">
+        <div class="tool-header" style="margin-bottom:0">
+          <div class="tool-icon-wrap">🍎</div>
+          <div><div class="tool-name">Food Nutrition Finder</div><div class="tool-sub">Search any food to see calories, protein, carbs & fat (per 100g)</div></div>
+        </div>
+        <div style="margin-top:24px">
+          <div class="food-search-row">
+            <input class="food-input" type="text" id="food-search" placeholder="Type a food… e.g. dal, paneer, banana, rice, roti…" onkeydown="if(event.key==='Enter')findFood()"/>
+            <button class="btn btn-forest" onclick="findFood()">Search</button>
+          </div>
+          <div class="food-results" id="food-results"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  BLOG PAGE  ████
+════════════════════════════════════ -->
+<div class="page" id="page-blog">
+  <div class="page-hero">
+    <h1>Health <em>Articles</em></h1>
+    <p>Evidence-based nutrition guides, recipes, and wellness tips — written by Kajal, rooted in Indian lifestyle.</p>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="blog-cats">
+        <button class="blog-cat-btn active" onclick="filterBlog('all',this)">All Articles</button>
+        <button class="blog-cat-btn" onclick="filterBlog('hormones',this)">Hormones</button>
+        <button class="blog-cat-btn" onclick="filterBlog('weight',this)">Weight Loss</button>
+        <button class="blog-cat-btn" onclick="filterBlog('diabetes',this)">Diabetes</button>
+        <button class="blog-cat-btn" onclick="filterBlog('gut',this)">Gut Health</button>
+        <button class="blog-cat-btn" onclick="filterBlog('lifestyle',this)">Lifestyle</button>
+      </div>
+      <div class="blog-full-grid" id="blog-grid">
+        <div class="blog-full-card reveal" data-cat="hormones"><img class="bfc-img" src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&q=80" alt="PCOS"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Hormones</div><div class="bfc-date">Mar 2026</div></div><div class="bfc-title">Can PCOS Be Managed Naturally? A Complete Guide</div><div class="bfc-excerpt">Discover how anti-inflammatory foods, cycle-syncing nutrition, and lifestyle changes can significantly reduce PCOS symptoms without relying solely on medication.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-1" data-cat="hormones"><img class="bfc-img" src="https://images.unsplash.com/photo-1455849318743-b2233052fcff?w=600&q=80" alt="Thyroid"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Hormones</div><div class="bfc-date">Feb 2026</div></div><div class="bfc-title">Thyroid & Diet: What to Eat & What to Avoid</div><div class="bfc-excerpt">Learn which foods support thyroid function, which ones to limit, and how to build a selenium and iodine-rich Indian meal plan for thyroid health.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-2" data-cat="weight"><img class="bfc-img" src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?w=600&q=80" alt="Weight Loss"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Weight Loss</div><div class="bfc-date">Mar 2026</div></div><div class="bfc-title">Why Your Weight Loss Is Stuck & How to Fix It</div><div class="bfc-excerpt">Plateaus are caused by metabolic adaptation, hormone imbalance, or hidden calorie creep. Here's exactly how to diagnose and break through yours.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal" data-cat="weight"><img class="bfc-img" src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600&q=80" alt="Fat Loss"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Weight Loss</div><div class="bfc-date">Jan 2026</div></div><div class="bfc-title">The Truth About Fat Loss with Indian Food</div><div class="bfc-excerpt">You don't need to give up roti, rice, or ghee to lose weight. Here's how to use traditional Indian foods strategically for sustainable fat loss.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-1" data-cat="diabetes"><img class="bfc-img" src="https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=600&q=80" alt="Diabetes"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Diabetes</div><div class="bfc-date">Feb 2026</div></div><div class="bfc-title">Best Indian Foods to Control Blood Sugar</div><div class="bfc-excerpt">From methi to karela to brown rice — a practical guide to the best blood-sugar-friendly foods already sitting in your Indian kitchen.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-2" data-cat="gut"><img class="bfc-img" src="https://images.unsplash.com/photo-1547592180-85f173990554?w=600&q=80" alt="Gut Health"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Gut Health</div><div class="bfc-date">Jan 2026</div></div><div class="bfc-title">Gut Health & Digestion: The Indian Approach</div><div class="bfc-excerpt">Traditional Indian fermented foods like dahi, idli, kanji, and pickles are powerhouses of probiotics. Here's how to use them for gut healing.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal" data-cat="lifestyle"><img class="bfc-img" src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80" alt="Yoga Nutrition"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Lifestyle</div><div class="bfc-date">Mar 2026</div></div><div class="bfc-title">Yoga & Nutrition: The Perfect Partnership</div><div class="bfc-excerpt">How aligning your meals with your yoga practice supercharges your energy, flexibility, recovery, and mental clarity throughout the day.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-1" data-cat="lifestyle"><img class="bfc-img" src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=600&q=80" alt="Sleep"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Lifestyle</div><div class="bfc-date">Dec 2025</div></div><div class="bfc-title">How Sleep Affects Weight Loss & Hormones</div><div class="bfc-excerpt">Poor sleep spikes cortisol and ghrelin — the hunger hormone. Discover the nutrition and lifestyle strategies to improve sleep quality naturally.</div><span class="bfc-read">Read Article →</span></div></div>
+        <div class="blog-full-card reveal delay-2" data-cat="gut"><img class="bfc-img" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=600&q=80" alt="Mental Health"/><div class="bfc-body"><div class="bfc-meta"><div class="bfc-cat-pill">Gut Health</div><div class="bfc-date">Nov 2025</div></div><div class="bfc-title">Gut Health Affects Mental Health — Here's How</div><div class="bfc-excerpt">The gut-brain axis is real. 90% of serotonin is made in your gut. Learn how healing your microbiome can improve mood, anxiety, and mental clarity.</div><span class="bfc-read">Read Article →</span></div></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  ABOUT PAGE  ████
+════════════════════════════════════ -->
+<div class="page" id="page-about">
+  <div class="page-hero">
+    <h1>About <em>Kajal</em></h1>
+    <p>A certified nutritionist on a mission to make healthy eating accessible, enjoyable, and sustainable for every Indian household.</p>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="about-page-grid">
+        <div class="about-page-imgs reveal">
+          <img class="api-main" src="https://images.unsplash.com/photo-1551782450-17144efb9c50?w=700&q=85" alt="Nutritionist consulting client"/>
+          <img class="api-small" src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=300&q=80" alt="Healthy food"/>
+          <div class="about-timeline" style="margin-top:36px">
+            <div class="at-item"><div class="at-dot">🎓</div><div class="at-content"><div class="at-year">2014</div><div class="at-title">BSc Clinical Nutrition & Dietetics</div><div class="at-desc">Graduated with honours from a top nutrition institute. Specialised in therapeutic diets.</div></div></div>
+            <div class="at-item"><div class="at-dot">🏥</div><div class="at-content"><div class="at-year">2015–2018</div><div class="at-title">Clinical Nutritionist — Apollo Hospital</div><div class="at-desc">Worked with endocrinology, gastroenterology, and cardiac departments managing complex cases.</div></div></div>
+            <div class="at-item"><div class="at-dot">🌿</div><div class="at-content"><div class="at-year">2018</div><div class="at-title">Launched Kajal Nutrition Studio</div><div class="at-desc">Founded my private practice to offer personalised, holistic nutrition coaching online and offline.</div></div></div>
+            <div class="at-item"><div class="at-dot">🌏</div><div class="at-content"><div class="at-year">2026</div><div class="at-title">500+ Clients Globally</div><div class="at-desc">Now serving clients across India, UAE, UK, USA, and Southeast Asia through virtual consultations.</div></div></div>
+          </div>
+        </div>
+        <div class="reveal delay-1">
+          <div class="section-tag">My Story</div>
+          <h2 class="section-title">Passionate about <em>healing</em> through food</h2>
+          <p style="font-size:.9rem;color:var(--gray);line-height:1.85;margin-bottom:20px">Hi, I'm Kajal Shrivastava — a certified dietician, nutritionist, and wellness coach with 8+ years of experience. My journey began when I saw close family members struggle with diabetes and PCOS, and realised that most medical advice was either generic or disconnected from Indian food culture.</p>
+          <p style="font-size:.9rem;color:var(--gray);line-height:1.85;margin-bottom:28px">I created Kajal Nutrition Studio to bridge that gap — combining the precision of clinical nutrition with the warmth of Indian cooking traditions. I believe that healing should never mean giving up the foods you love.</p>
+          <div class="values-grid">
+            <div class="value-card"><div class="value-icon">🌿</div><div class="value-title">Real Food First</div><div class="value-desc">No supplements before food. Every plan is built around whole, accessible Indian ingredients.</div></div>
+            <div class="value-card"><div class="value-icon">🔬</div><div class="value-title">Science-Backed</div><div class="value-desc">Every recommendation is grounded in current nutritional science and clinical evidence.</div></div>
+            <div class="value-card"><div class="value-icon">🤝</div><div class="value-title">Culturally Rooted</div><div class="value-desc">Plans respect Indian festivals, regional cuisines, and family dining realities.</div></div>
+            <div class="value-card"><div class="value-icon">💬</div><div class="value-title">Always Accessible</div><div class="value-desc">WhatsApp support and weekly check-ins mean you're never alone on your journey.</div></div>
+          </div>
+          <a class="btn btn-terra" style="margin-top:32px" onclick="showPage('contact')">Book a Free Consultation →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  CONTACT PAGE  ████
+════════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <h1>Book a <em>Consultation</em></h1>
+    <p>Take the first step towards a healthier, happier you. Fill out the form and I'll get back within 24 hours.</p>
+  </div>
+  <section class="section">
+    <div class="section-inner">
+      <div class="contact-layout">
+        <div class="reveal">
+          <div class="section-tag">Get in Touch</div>
+          <h2 class="section-title">Let's start your <em>journey</em></h2>
+          <div class="ci-item"><div class="ci-icon">📱</div><div><div class="ci-label">WhatsApp</div><div class="ci-value">+91 99999 99999</div></div></div>
+          <div class="ci-item"><div class="ci-icon">✉️</div><div><div class="ci-label">Email</div><div class="ci-value">kajal@nutritionsstudio.com</div></div></div>
+          <div class="ci-item"><div class="ci-icon">📸</div><div><div class="ci-label">Instagram</div><div class="ci-value">@kajalnutrition</div></div></div>
+          <div class="ci-item"><div class="ci-icon">🌏</div><div><div class="ci-label">Serving</div><div class="ci-value">India, UAE, UK, USA & globally</div></div></div>
+          <div class="consult-card">
+            <div class="cc-title">Free 15-Min Discovery Call</div>
+            <ul class="cc-features">
+              <li>Understand your health goals</li>
+              <li>Review your current diet & lifestyle</li>
+              <li>Identify the right programme for you</li>
+              <li>Zero obligation — completely free</li>
+            </ul>
+            <a class="btn btn-gold" href="https://wa.me/919999999999" target="_blank">💬 Book on WhatsApp</a>
+          </div>
+        </div>
+        <div class="contact-form reveal delay-1">
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--forest);margin-bottom:28px">Send a Message</h3>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Priya"/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="priya@email.com"/></div>
+          <div class="form-group"><label>Phone / WhatsApp</label><input type="tel" placeholder="+91 98765 43210"/></div>
+          <div class="form-group"><label>Primary Health Goal</label><select><option>Select your goal...</option><option>Fat Loss / Weight Management</option><option>PCOS / Hormonal Balance</option><option>Diabetes Management</option><option>Gut Health Reset</option><option>Prenatal / Postnatal Nutrition</option><option>Kids Nutrition</option><option>General Wellness</option></select></div>
+          <div class="form-group"><label>Tell me about your health situation</label><textarea placeholder="Share any health conditions, current diet, lifestyle details, or specific concerns..."></textarea></div>
+          <button class="btn btn-terra form-submit" onclick="submitForm()">Send Message →</button>
+          <div class="form-note">🔒 Your information is private and never shared. I'll respond within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ════════════════════════════════════
+  ████  LOGIN / DASHBOARD  ████
+════════════════════════════════════ -->
+<div class="page" id="page-login">
+  <div class="auth-wrap" id="auth-login-view">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="auth-logo-icon">🌿</div>
+        <div class="auth-title">Welcome Back</div>
+        <div class="auth-sub">Sign in to your Kajal Nutrition Studio account</div>
+      </div>
+      <div class="auth-tab-row">
+        <div class="auth-tab active" onclick="switchAuthTab('login',this)">Login</div>
+        <div class="auth-tab" onclick="switchAuthTab('signup',this)">Sign Up</div>
+      </div>
+      <div class="auth-form" id="auth-login-form">
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="••••••••"/></div>
+        <button class="auth-submit" onclick="showDashboard()">Sign In →</button>
+        <div class="auth-or">or continue with</div>
+        <div class="auth-social">
+          <button class="auth-social-btn">🇬 Google</button>
+          <button class="auth-social-btn">📘 Facebook</button>
+        </div>
+        <p style="text-align:center;font-size:.74rem;color:var(--gray);margin-top:18px">Don't have an account? <span style="color:var(--terra);cursor:pointer;font-weight:600" onclick="switchAuthTab('signup',document.querySelector('.auth-tab:nth-child(2)'))">Sign up free</span></p>
+      </div>
+      <div class="auth-form" id="auth-signup-form" style="display:none">
+        <div class="form-row"><div class="form-group"><label>First Name</label><input type="text" placeholder="Priya"/></div><div class="form-group"><label>Last Name</label><input type="text" placeholder="Sharma"/></div></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="you@email.com"/></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Create password"/></div>
+        <button class="auth-submit" onclick="showDashboard()">Create Account →</button>
+      </div>
+    </div>
+  </div>
+  <div id="dashboard-view" style="display:none">
+    <div class="dash-wrap">
+      <div class="dash-header">
+        <div class="dash-greeting">
+          <h2>Good Morning, Priya! 🌿</h2>
+          <p>Week 3 of your Fat Loss Programme — you're doing great!</p>
+        </div>
+        <div style="display:flex;gap:12px">
+          <button class="btn btn-outline-f btn-sm">📊 Progress Report</button>
+          <button class="btn btn-terra btn-sm" onclick="showPage('contact')">💬 Message Kajal</button>
+        </div>
+      </div>
+      <div class="dash-grid">
+        <div class="dash-stat"><div class="ds-icon">⚖️</div><div class="ds-label">Current Weight</div><div class="ds-value">62<span>kg</span></div><div class="ds-change">↓ 3kg from start</div></div>
+        <div class="dash-stat"><div class="ds-icon">🔥</div><div class="ds-label">Today's Calories</div><div class="ds-value">1,240<span>kcal</span></div><div class="ds-change">560 remaining</div></div>
+        <div class="dash-stat"><div class="ds-icon">💪</div><div class="ds-label">Protein Today</div><div class="ds-value">64<span>g</span></div><div class="ds-change">26g to target</div></div>
+        <div class="dash-stat"><div class="ds-icon">💧</div><div class="ds-label">Water Intake</div><div class="ds-value">1.8<span>L</span></div><div class="ds-change">1.2L more to go</div></div>
+      </div>
+      <div class="dash-main">
+        <div class="dash-card">
+          <h3>Today's Nutrition Progress</h3>
+          <div class="progress-item"><div class="pi-row"><span class="pi-label">Calories</span><span class="pi-val">1,240 / 1,800 kcal</span></div><div class="progress-bar"><div class="progress-fill" style="width:69%"></div></div></div>
+          <div class="progress-item"><div class="pi-row"><span class="pi-label">Protein</span><span class="pi-val">64 / 90g</span></div><div class="progress-bar"><div class="progress-fill terra" style="width:71%"></div></div></div>
+          <div class="progress-item"><div class="pi-row"><span class="pi-label">Carbohydrates</span><span class="pi-val">140 / 220g</span></div><div class="progress-bar"><div class="progress-fill gold" style="width:64%"></div></div></div>
+          <div class="progress-item"><div class="pi-row"><span class="pi-label">Water</span><span class="pi-val">1.8 / 3L</span></div><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div></div>
+          <div class="progress-item"><div class="pi-row"><span class="pi-label">Fats</span><span class="pi-val">32 / 48g</span></div><div class="progress-bar"><div class="progress-fill terra" style="width:67%"></div></div></div>
+        </div>
+        <div class="dash-card">
+          <h3>Today's Meal Plan</h3>
+          <div class="meal-today-list">
+            <div class="mtl-item"><div class="mtl-emoji">🌅</div><div class="mtl-food">Lemon water + almonds</div><div class="mtl-cal">45 kcal</div><div class="mtl-check done" onclick="this.classList.toggle('done')">✓</div></div>
+            <div class="mtl-item"><div class="mtl-emoji">🥣</div><div class="mtl-food">Oats porridge + berries</div><div class="mtl-cal">320 kcal</div><div class="mtl-check done" onclick="this.classList.toggle('done')">✓</div></div>
+            <div class="mtl-item"><div class="mtl-emoji">🍛</div><div class="mtl-food">Dal + roti + sabzi + curd</div><div class="mtl-cal">480 kcal</div><div class="mtl-check done" onclick="this.classList.toggle('done')">✓</div></div>
+            <div class="mtl-item"><div class="mtl-emoji">🍵</div><div class="mtl-food">Green tea + roasted chana</div><div class="mtl-cal">120 kcal</div><div class="mtl-check" onclick="this.classList.toggle('done')">○</div></div>
+            <div class="mtl-item"><div class="mtl-emoji">🌙</div><div class="mtl-food">Moong dal khichdi + salad</div><div class="mtl-cal">350 kcal</div><div class="mtl-check" onclick="this.classList.toggle('done')">○</div></div>
+            <div class="mtl-item"><div class="mtl-emoji">🥛</div><div class="mtl-food">Turmeric milk</div><div class="mtl-cal">80 kcal</div><div class="mtl-check" onclick="this.classList.toggle('done')">○</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="text-align:center;padding:20px;color:var(--gray);font-size:.8rem;background:#fff;border-radius:var(--r);box-shadow:0 2px 12px rgba(0,0,0,.05)">
+        <div style="font-size:1.2rem;margin-bottom:8px">🌿</div>
+        Full dashboard coming soon — track weight, view full diet plan, message Kajal, and access your progress reports.
+        <div style="margin-top:14px"><button class="btn btn-forest btn-sm" onclick="showPage('home')">Back to Home</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+  FOOTER (shared)
+════════════════════════════════════ -->
+<footer id="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand-logo">Kajal<span>.</span> Nutrition Studio</div>
+      <div class="footer-tagline">Certified Dietician & Nutritionist helping you balance your body and transform your life — one meal at a time.</div>
+      <div class="footer-socials">
+        <a class="fsoc-btn" href="#" title="Instagram">📸</a>
+        <a class="fsoc-btn" href="#" title="YouTube">▶️</a>
+        <a class="fsoc-btn" href="#" title="WhatsApp">💬</a>
+        <a class="fsoc-btn" href="#" title="Email">✉️</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Programs</h4><ul><li><a onclick="showPage('programs')">Fat Loss</a></li><li><a onclick="showPage('programs')">PCOS Balance</a></li><li><a onclick="showPage('programs')">Diabetes Care</a></li><li><a onclick="showPage('programs')">Gut Reset</a></li><li><a onclick="showPage('programs')">Kids Nutrition</a></li></ul></div>
+    <div class="footer-col"><h4>Tools & Resources</h4><ul><li><a onclick="showPage('tools')">BMI Calculator</a></li><li><a onclick="showPage('tools')">Calorie Calculator</a></li><li><a onclick="showPage('tools')">Protein Calculator</a></li><li><a onclick="showPage('blog')">Health Articles</a></li><li><a onclick="showPage('tools')">Food Finder</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a onclick="showPage('about')">About Kajal</a></li><li><a onclick="showPage('contact')">Contact</a></li><li><a onclick="showPage('contact')">Book Consultation</a></li><li><a onclick="showPage('login')">Client Login</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Kajal Nutrition Studio · All rights reserved</span>
+    <span>Made with 🌿 for wellness · India & Global</span>
+  </div>
+</footer>
+
+<!-- FLOATING WHATSAPP -->
+<a id="wa-btn" href="https://wa.me/919999999999" target="_blank" title="Chat on WhatsApp">💬</a>
+
+<!-- AI CHAT WIDGET -->
+<div id="chat-widget">
+  <div id="chat-box">
+    <div class="chat-head">
+      <div class="chat-head-av">🌿</div>
+      <div class="chat-head-info">
+        <div class="chat-head-name">Kajal's AI Assistant</div>
+        <div class="chat-head-status">Online · Replies instantly</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Hi! 👋 I'm Kajal's AI nutrition assistant. Ask me anything about diet, PCOS, weight loss, or healthy eating!</div>
+    </div>
+    <div class="chat-suggestions">
+      <button class="chat-sugg" onclick="askChat('How to manage PCOS with diet?')">PCOS & Diet</button>
+      <button class="chat-sugg" onclick="askChat('Best Indian foods for weight loss?')">Weight Loss</button>
+      <button class="chat-sugg" onclick="askChat('Foods to control blood sugar?')">Diabetes</button>
+    </div>
+    <div class="chat-input-row">
+      <input id="chat-input" type="text" placeholder="Ask about nutrition..." onkeydown="if(event.key==='Enter')sendChat()"/>
+      <button id="chat-send" onclick="sendChat()">➤</button>
+    </div>
+  </div>
+  <button id="chat-toggle" onclick="toggleChat()" title="AI Nutrition Assistant">🤖</button>
+</div>
+
+<!-- ════════════════════════════════════
+  JAVASCRIPT
+════════════════════════════════════ -->
+<script>
+// ── PAGE ROUTING ──────────────────────────────
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const target=document.getElementById('page-'+id);
+  if(target){target.classList.add('active')}
+  // update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a=>{
+    a.classList.toggle('active',a.dataset.page===id);
+  });
+  // hide footer on login page
+  document.getElementById('site-footer').style.display=id==='login'?'none':'block';
+  window.scrollTo({top:0,behavior:'smooth'});
+  // re-trigger reveals
+  setTimeout(initReveal,100);
+}
+
+// ── MOBILE MENU ────────────────────────────────
+function toggleMobile(){
+  const m=document.getElementById('mobile-menu');
+  m.classList.toggle('open');
+}
+
+// ── NAVBAR SCROLL ──────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// ── SCROLL REVEAL ─────────────────────────────
+function initReveal(){
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach((e,i)=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'),i*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:0.1});
+  document.querySelectorAll('.page.active .reveal:not(.visible)').forEach(el=>obs.observe(el));
+}
+document.addEventListener('DOMContentLoaded',initReveal);
+
+// ── TIP OF THE DAY ────────────────────────────
+const tips=[
+  "Start your day with warm water and soaked seeds for better digestion.",
+  "Include protein in every meal — dal, paneer, or curd keep you full longer.",
+  "Sleep 7–8 hours. Poor sleep spikes ghrelin, the hunger hormone.",
+  "Avoid processed sugar. Replace with dates, jaggery, or fruits.",
+  "Eat mindfully — chew 20x and stop at 80% full. No distractions.",
+  "3 litres of water daily flushes toxins and reduces false hunger cues.",
+  "A banana 30 min before exercise gives clean, sustained energy.",
+  "Fermented foods like dahi and idli heal your gut microbiome daily.",
+  "Eat your largest meal at lunch when digestion is strongest.",
+  "Colour your plate — 5+ colours of veg means 5+ types of antioxidants."
+];
+function refreshTip(){
+  const el=document.getElementById('tip-text');
+  el.style.opacity=0;
+  setTimeout(()=>{el.textContent=tips[Math.floor(Math.random()*tips.length)];el.style.opacity=1},300);
+}
+document.getElementById('tip-text').style.transition='opacity .3s';
+document.getElementById('tip-text').textContent=tips[Math.floor(Math.random()*tips.length)];
+
+// ── BMI CALCULATOR ────────────────────────────
+function calcBMI(){
+  const h=parseFloat(document.getElementById('bmi-h').value);
+  const w=parseFloat(document.getElementById('bmi-w').value);
+  if(!h||!w){alert('Please enter height and weight');return}
+  const bmi=w/((h/100)**2);
+  document.getElementById('bmi-result').textContent=bmi.toFixed(1);
+  let cat,emoji;
+  if(bmi<18.5){cat='Underweight';emoji='⚠️'}
+  else if(bmi<25){cat='Normal Weight ✓';emoji='✅'}
+  else if(bmi<30){cat='Overweight';emoji='⚡'}
+  else{cat='Obese — Consult Kajal';emoji='🔴'}
+  document.getElementById('bmi-cat').textContent=cat;
+  document.getElementById('bmi-emoji').textContent=emoji;
+}
+
+// ── CALORIE CALCULATOR ────────────────────────
+function calcCalories(){
+  const age=parseFloat(document.getElementById('cal-age').value);
+  const gen=document.getElementById('cal-gen').value;
+  const h=parseFloat(document.getElementById('cal-h').value);
+  const w=parseFloat(document.getElementById('cal-w').value);
+  const act=parseFloat(document.getElementById('cal-act').value);
+  if(!age||!h||!w){alert('Please fill all fields');return}
+  let bmr=gen==='f'?(447.593+(9.247*w)+(3.098*h)-(4.330*age)):(88.362+(13.397*w)+(4.799*h)-(5.677*age));
+  const tdee=Math.round(bmr*act);
+  document.getElementById('cal-result').textContent=tdee;
+  document.getElementById('cal-goal').textContent=`Fat loss: ${tdee-400} kcal | Gain: ${tdee+300} kcal`;
+}
+
+// ── PROTEIN CALCULATOR ────────────────────────
+function calcProtein(){
+  const w=parseFloat(document.getElementById('prot-w').value);
+  const g=parseFloat(document.getElementById('prot-goal').value);
+  if(!w){alert('Please enter your weight');return}
+  const prot=Math.round(w*g);
+  document.getElementById('prot-result').textContent=prot+'g';
+  document.getElementById('prot-foods').textContent=`≈ ${Math.round(prot/25)} cups dal or ${Math.round(prot/18)} eggs equivalent`;
+}
+
+// ── WATER CALCULATOR ─────────────────────────
+function calcWater(){
+  const w=parseFloat(document.getElementById('wat-w').value);
+  const clim=parseFloat(document.getElementById('wat-clim').value);
+  const ex=parseFloat(document.getElementById('wat-ex').value);
+  if(!w){alert('Please enter your weight');return}
+  const ml=Math.round(((w*35)*clim)+ex);
+  const L=(ml/1000).toFixed(1);
+  const glasses=Math.round(ml/250);
+  document.getElementById('wat-result').textContent=L+'L';
+  document.getElementById('wat-glasses').textContent=`${glasses} glasses (250ml each) per day`;
+}
+
+// ── FOOD FINDER ───────────────────────────────
+const foodDB={
+  'dal':{cal:116,prot:9,carbs:20,fat:0.4,fiber:8},
+  'paneer':{cal:265,prot:18,carbs:1.2,fat:21,fiber:0},
+  'rice':{cal:130,prot:2.7,carbs:28,fat:0.3,fiber:0.4},
+  'roti':{cal:264,prot:8,carbs:50,fat:3.7,fiber:2},
+  'banana':{cal:89,prot:1.1,carbs:23,fat:0.3,fiber:2.6},
+  'apple':{cal:52,prot:0.3,carbs:14,fat:0.2,fiber:2.4},
+  'curd':{cal:61,prot:3.5,carbs:4.7,fat:3.3,fiber:0},
+  'sabzi':{cal:55,prot:2.5,carbs:9,fat:1.5,fiber:3},
+  'oats':{cal:389,prot:17,carbs:66,fat:7,fiber:11},
+  'egg':{cal:155,prot:13,carbs:1.1,fat:11,fiber:0},
+  'chicken':{cal:165,prot:31,carbs:0,fat:3.6,fiber:0},
+  'tofu':{cal:76,prot:8,carbs:1.9,fat:4.8,fiber:0.3},
+  'spinach':{cal:23,prot:2.9,carbs:3.6,fat:0.4,fiber:2.2},
+  'potato':{cal:77,prot:2,carbs:17,fat:0.1,fiber:2.2},
+  'milk':{cal:61,prot:3.2,carbs:4.8,fat:3.3,fiber:0},
+  'ghee':{cal:900,prot:0,carbs:0,fat:100,fiber:0},
+  'chana':{cal:164,prot:8.9,carbs:27,fat:2.6,fiber:7.6},
+  'rajma':{cal:127,prot:8.7,carbs:22,fat:0.5,fiber:6.4},
+  'almonds':{cal:579,prot:21,carbs:22,fat:50,fiber:13},
+  'walnuts':{cal:654,prot:15,carbs:14,fat:65,fiber:6.7},
+};
+function findFood(){
+  const q=document.getElementById('food-search').value.trim().toLowerCase();
+  const container=document.getElementById('food-results');
+  if(!q){container.innerHTML='';return}
+  const matches=Object.keys(foodDB).filter(k=>k.includes(q)||(q.includes(k)&&k.length>2));
+  if(matches.length===0){
+    container.innerHTML=`<div style="grid-column:1/-1;text-align:center;padding:20px;color:var(--gray);font-size:.85rem">No results for "<strong>${q}</strong>". Try: dal, paneer, rice, banana, oats, chana…</div>`;
+    return;
+  }
+  container.innerHTML=matches.slice(0,6).map(k=>{
+    const f=foodDB[k];
+    return `<div class="food-result-card">
+      <div class="food-result-name">${k.charAt(0).toUpperCase()+k.slice(1)}</div>
+      <div style="font-size:.66rem;color:var(--gray);margin-bottom:8px">per 100g</div>
+      <div class="food-macros-mini">
+        <div class="fmm-row"><span class="fmm-l">Calories</span><span class="fmm-v">${f.cal} kcal</span></div>
+        <div class="fmm-row"><span class="fmm-l">Protein</span><span class="fmm-v">${f.prot}g</span></div>
+        <div class="fmm-row"><span class="fmm-l">Carbs</span><span class="fmm-v">${f.carbs}g</span></div>
+        <div class="fmm-row"><span class="fmm-l">Fat</span><span class="fmm-v">${f.fat}g</span></div>
+        <div class="fmm-row"><span class="fmm-l">Fibre</span><span class="fmm-v">${f.fiber}g</span></div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ── BLOG FILTER ───────────────────────────────
+function filterBlog(cat,btn){
+  document.querySelectorAll('.blog-cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blog-grid .blog-full-card').forEach(card=>{
+    if(cat==='all'||card.dataset.cat===cat){card.style.display=''}
+    else{card.style.display='none'}
+  });
+}
+
+// ── AUTH TABS ─────────────────────────────────
+function switchAuthTab(tab,btn){
+  document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('auth-login-form').style.display=tab==='login'?'block':'none';
+  document.getElementById('auth-signup-form').style.display=tab==='signup'?'block':'none';
+}
+
+// ── DASHBOARD ─────────────────────────────────
+function showDashboard(){
+  document.getElementById('auth-login-view').style.display='none';
+  document.getElementById('dashboard-view').style.display='block';
+  document.getElementById('site-footer').style.display='block';
+  setTimeout(initReveal,100);
+}
+
+// ── CONTACT FORM ──────────────────────────────
+function submitForm(){
+  alert('Thank you! Kajal will get back to you within 24 hours. 🌿\n\nFor faster response, WhatsApp directly!');
+}
+
+// ── AI CHAT ───────────────────────────────────
+const chatResponses={
+  'pcos':["Great question! For PCOS, I recommend focusing on a low-GI, anti-inflammatory diet. 🌿\n\nKey foods: leafy greens, methi, seeds (flax, pumpkin), legumes, and fermented foods like dahi. Avoid refined sugar and processed carbs.\n\nKajal's PCOS Balance Program is designed specifically for this — would you like to book a free consultation?","For PCOS management, meal timing also matters. Eat within a 10-hour window and include protein at every meal to improve insulin sensitivity. 💪"],
+  'weight':["For sustainable weight loss with Indian food, you don't need to give up roti or rice! 🍛\n\nFocus on: portion control, eating protein first, including lots of vegetables, and limiting liquid calories (chai with sugar, juices).\n\nA calorie deficit of 300–500 kcal/day with 90g+ protein is the formula.","Common reasons weight loss stalls: insufficient protein, poor sleep (raises cortisol), not eating enough fibre, or underestimating portion sizes. Want me to help calculate your targets?"],
+  'diabetes':["For blood sugar management, focus on low-GI Indian foods: broken wheat (dalia), brown rice, methi roti, dal-based dishes, and karela.\n\n🩸 Avoid: white rice, maida, sugary drinks, and high-GI fruits like mango/banana in excess.\n\nKajal's Diabetes Care Plan has helped many clients reduce HbA1c naturally!","The best times to eat for diabetics: breakfast within 1 hour of waking, no skipping meals, and a light dinner before 7:30 PM for better glucose regulation."],
+  'gut':["For gut health, Indian fermented foods are your best friends! 🦠\n\nTop probiotic-rich foods: dahi (curd), idli, dosa, kanji, homemade pickles, and lassi.\n\nFor IBS and bloating: start with easy-to-digest foods like khichdi, moong dal, and boiled vegetables, and slowly introduce fibre.","Gut healing takes 4–8 weeks. Remove trigger foods first (fried, spicy, processed), then reintroduce slowly. Kajal's Gut Reset programme guides you through this step by step."],
+  'protein':["Great vegetarian protein sources in Indian cuisine: 🥚\n\n• Paneer: 18g/100g\n• Dal (lentils): 9g/100g\n• Chana: 8.9g/100g\n• Curd/dahi: 3.5g/100g\n• Tofu: 8g/100g\n\nAim for 0.8–1.6g of protein per kg of body weight depending on your goals."],
+  'water':["Daily water intake recommendation: 💧\n\n• General: 35ml × your body weight in kg\n• Hot weather / active: add 300–500ml more\n• Example: 65kg person = ~2.3L minimum\n\nPro tip: start with 2 glasses of warm water on waking, before any food or chai. This kickstarts digestion."],
+  'sleep':["Sleep and nutrition are deeply connected! 😴\n\nFor better sleep:\n• Avoid heavy meals 3 hours before bedtime\n• Try warm turmeric milk or chamomile tea at 9 PM\n• Magnesium-rich foods (bananas, seeds, dark leafy greens) support melatonin\n• Limit screen time after 9 PM"],
+  'default':["That's a great question! 🌿 For personalised advice specific to your body and health goals, I'd recommend booking a free 15-minute consultation with Kajal.\n\nShe can review your current diet, lifestyle, and health history to give you an exact plan that works for you.","I'm here to help with general nutrition guidance! For a personalised diet plan tailored to your specific health situation, Kajal offers free consultations. Would you like me to share how to book one?"]
+};
+
+function getResponse(msg){
+  const m=msg.toLowerCase();
+  if(m.includes('pcos')||m.includes('hormone')||m.includes('period')||m.includes('pcod'))return chatResponses.pcos[Math.floor(Math.random()*chatResponses.pcos.length)];
+  if(m.includes('weight')||m.includes('fat')||m.includes('loss')||m.includes('slim'))return chatResponses.weight[Math.floor(Math.random()*chatResponses.weight.length)];
+  if(m.includes('diabet')||m.includes('sugar')||m.includes('blood')||m.includes('hba1c'))return chatResponses.diabetes[Math.floor(Math.random()*chatResponses.diabetes.length)];
+  if(m.includes('gut')||m.includes('ibs')||m.includes('bloat')||m.includes('digest')||m.includes('acidity'))return chatResponses.gut[Math.floor(Math.random()*chatResponses.gut.length)];
+  if(m.includes('protein'))return chatResponses.protein[0];
+  if(m.includes('water')||m.includes('hydrat'))return chatResponses.water[0];
+  if(m.includes('sleep')||m.includes('insomn'))return chatResponses.sleep[0];
+  return chatResponses.default[Math.floor(Math.random()*chatResponses.default.length)];
+}
+
+function addMessage(text,type){
+  const msgs=document.getElementById('chat-messages');
+  const div=document.createElement('div');
+  div.className=`chat-msg ${type}`;
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function sendChat(){
+  const input=document.getElementById('chat-input');
+  const msg=input.value.trim();
+  if(!msg)return;
+  addMessage(msg,'user');
+  input.value='';
+  // typing indicator
+  const typing=document.createElement('div');
+  typing.className='chat-msg typing';
+  typing.innerHTML='<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+  document.getElementById('chat-messages').appendChild(typing);
+  document.getElementById('chat-messages').scrollTop=9999;
+  setTimeout(()=>{
+    typing.remove();
+    addMessage(getResponse(msg),'bot');
+  },1200+Math.random()*600);
+}
+
+function askChat(msg){
+  document.getElementById('chat-input').value=msg;
+  sendChat();
+}
+
+function toggleChat(){
+  const box=document.getElementById('chat-box');
+  box.classList.toggle('open');
+}
+
+// ── INIT ──────────────────────────────────────
+window.addEventListener('scroll',initReveal);
+document.addEventListener('DOMContentLoaded',()=>{initReveal();showPage('home')});
+</script>
+</body>
+</html>
